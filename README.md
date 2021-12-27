@@ -22,6 +22,7 @@ defaults:
 module.exports = {
   alias: {}, // webpack aliases
   background: "#000", // app meta
+  entry: "./src/index", // webpack entry
   exposes: {}, // module-federation exposed paths
   links: [], // injected link tags
   logo: "provided image", // favicons (all sizes generated)

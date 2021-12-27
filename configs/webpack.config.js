@@ -10,6 +10,7 @@ module.exports = (
   {
     alias = {},
     background = "#000",
+    entry = "./src/index",
     exposes = {},
     links = [],
     logo = require.resolve("../assets/logo.png"),
@@ -25,7 +26,7 @@ module.exports = (
     port,
     static: path.join(__dirname, "dist"),
   },
-  entry: "./src/index",
+  entry,
   mode: "development",
   module: {
     rules: [
