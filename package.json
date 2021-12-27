@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rubixibuc/scripts.git"
+    "url": "git+https://github.com/rubixibuc/build-scripts.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rubixibuc/scripts/issues"
+    "url": "https://github.com/rubixibuc/build-scripts/issues"
   },
-  "homepage": "https://github.com/rubixibuc/scripts#readme",
+  "homepage": "https://github.com/rubixibuc/build-scripts#readme",
   "dependencies": {
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.16.5",
