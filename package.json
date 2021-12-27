@@ -1,5 +1,5 @@
 {
-  "name": "@rubixibuc/scripts",
+  "name": "@rubixibuc/build-scripts",
   "version": "0.0.0",
   "description": "",
   "bin": "cli.js",

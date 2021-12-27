@@ -1,6 +1,6 @@
 module.exports = async (options) => {
   const { cosmiconfig } = require("cosmiconfig");
-  const explorer = cosmiconfig("buildscripts");
+  const explorer = cosmiconfig("build-scripts");
 
   const config = await explorer.search();
 
