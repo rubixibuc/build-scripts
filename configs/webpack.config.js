@@ -46,24 +46,74 @@ module.exports = (
       },
       {
         test: /\.css$/i,
-        use: [
+        oneOf: [
           {
-            loader: require.resolve("css-loader"),
-            options: {
-              exportType: "css-style-sheet",
-              importLoaders: 1,
-            },
+            resourceQuery: /string/,
+            use: [
+              {
+                loader: require.resolve("css-loader"),
+                options: {
+                  exportType: "string",
+                  importLoaders: 1,
+                },
+              },
+              {
+                loader: require.resolve("postcss-loader"),
+                options: {
+                  postcssOptions: {
+                    plugins: [
+                      require.resolve("postcss-preset-env"),
+                      require.resolve("autoprefixer"),
+                    ],
+                  },
+                },
+              },
+            ],
           },
           {
-            loader: require.resolve("postcss-loader"),
-            options: {
-              postcssOptions: {
-                plugins: [
-                  require.resolve("postcss-preset-env"),
-                  require.resolve("autoprefixer"),
-                ],
+            resourceQuery: /style/,
+            use: [
+              require.resolve("style-loader"),
+              {
+                loader: require.resolve("css-loader"),
+                options: {
+                  importLoaders: 1,
+                },
               },
-            },
+              {
+                loader: require.resolve("postcss-loader"),
+                options: {
+                  postcssOptions: {
+                    plugins: [
+                      require.resolve("postcss-preset-env"),
+                      require.resolve("autoprefixer"),
+                    ],
+                  },
+                },
+              },
+            ],
+          },
+          {
+            use: [
+              {
+                loader: require.resolve("css-loader"),
+                options: {
+                  exportType: "css-style-sheet",
+                  importLoaders: 1,
+                },
+              },
+              {
+                loader: require.resolve("postcss-loader"),
+                options: {
+                  postcssOptions: {
+                    plugins: [
+                      require.resolve("postcss-preset-env"),
+                      require.resolve("autoprefixer"),
+                    ],
+                  },
+                },
+              },
+            ],
           },
         ],
       },
