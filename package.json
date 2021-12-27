@@ -1,5 +1,5 @@
 {
-  "name": "projectmanager",
+  "name": "@rubixibuc/scripts",
   "version": "0.0.0",
   "description": "",
   "bin": "cli.js",
