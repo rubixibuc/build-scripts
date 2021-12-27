@@ -1,6 +1,6 @@
 module.exports = async (options) => {
   const { cosmiconfig } = require("cosmiconfig");
-  const explorer = cosmiconfig("scripts");
+  const explorer = cosmiconfig("buildscripts");
 
   const config = await explorer.search();
 
@@ -8,7 +8,7 @@ module.exports = async (options) => {
   const WebpackDevServer = require("webpack-dev-server");
   const webpackConfig = require("../configs/webpack.config");
 
-  const compiler = Webpack(webpackConfig({ ...options }, { ...config }));
+  const compiler = Webpack(webpackConfig({ ...options }, { ...config.config }));
   const devServerOptions = { ...webpackConfig.devServer, open: true };
   const server = new WebpackDevServer(devServerOptions, compiler);
 

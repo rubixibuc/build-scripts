@@ -33,9 +33,9 @@ module.exports = (
         exclude: /node_modules/,
         test: /\.js$/i,
         use: {
-          loader: "babel-loader",
+          loader: require.resolve("babel-loader"),
           options: {
-            presets: ["@babel/preset-env"],
+            presets: [require.resolve("@babel/preset-env")],
           },
         },
       },
@@ -47,17 +47,20 @@ module.exports = (
         test: /\.css$/i,
         use: [
           {
-            loader: "css-loader",
+            loader: require.resolve("css-loader"),
             options: {
               exportType: "css-style-sheet",
               importLoaders: 1,
             },
           },
           {
-            loader: "postcss-loader",
+            loader: require.resolve("postcss-loader"),
             options: {
               postcssOptions: {
-                plugins: ["postcss-preset-env", "autoprefixer"],
+                plugins: [
+                  require.resolve("postcss-preset-env"),
+                  require.resolve("autoprefixer"),
+                ],
               },
             },
           },
