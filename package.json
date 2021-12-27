@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rubixibuc/projectmanager.git"
+    "url": "git+https://github.com/rubixibuc/scripts.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rubixibuc/projectmanager/issues"
+    "url": "https://github.com/rubixibuc/scripts/issues"
   },
-  "homepage": "https://github.com/rubixibuc/projectmanager#readme",
+  "homepage": "https://github.com/rubixibuc/scripts#readme",
   "dependencies": {
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.16.5",

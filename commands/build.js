@@ -1,6 +1,6 @@
 module.exports = async (options) => {
   const { cosmiconfig } = require("cosmiconfig");
-  const explorer = cosmiconfig(require("../package.json").name);
+  const explorer = cosmiconfig("scripts");
 
   const config = await explorer.search();
 

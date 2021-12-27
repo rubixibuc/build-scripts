@@ -13,7 +13,9 @@ module.exports = (
     exposes = {},
     links = [],
     logo = require.resolve("../assets/logo.png"),
+    metas = [],
     name = "myapp",
+    scripts = [],
     shared = {},
     theme_color = "#fff",
     title = "My App",
@@ -82,6 +84,8 @@ module.exports = (
     }),
     new HtmlWebpackTagsPlugin({
       links,
+      metas,
+      scripts,
     }),
     new FaviconsWebpackPlugin({
       favicons: {
