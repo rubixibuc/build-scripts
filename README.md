@@ -2,7 +2,7 @@
 
 ## usage
 
-`npx @rubixibuc/scripts [command]`
+`npx @rubixibuc/build-scripts [command]`
 
 commands:
 
@@ -14,7 +14,7 @@ commands:
 
 ## configuration
 
-scripts.config.js
+build-scripts.config.js
 
 defaults:
 
