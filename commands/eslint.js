@@ -13,5 +13,10 @@ module.exports = async (globs, options) => {
   const formatter = await eslint.loadFormatter("stylish");
   const resultText = formatter.format(results);
 
+  const filteredResults = ESLint.getErrorResults(results);
+  if (filteredResults.some((lintResult) => !lintResult.fixableErrorCount)) {
+    process.exitCode = 1;
+  }
+
   console.log(resultText);
 };

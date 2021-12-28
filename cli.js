@@ -14,7 +14,8 @@ program
 program
   .command("stylelint")
   .option("-f, --fix", "try fix")
-  .option("-c, --custom-syntax <custom-syntax>", "use custom syntax")
+  .option("-cs, --custom-syntax <custom-syntax>", "use custom syntax")
+  .option("-mw, --max-warnings <max-warnings>", "set max warnings")
   .argument("<globs...>", "path globs")
   .action(require("./commands/stylelint"));
 
