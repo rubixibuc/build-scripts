@@ -4,8 +4,6 @@
 
 ## Usage
 
----
-
 `> npx @rubixibuc/build-scripts [command]`
 
 or
@@ -24,8 +22,6 @@ and add to package.json:
 ```
 
 ## Commands
-
----
 
 - [build](#build)
 - [eslint](#eslint)
@@ -66,8 +62,6 @@ _if specified, command line port overrides setting from config_
 `> build-scripts stylelint [-f, --fix] [-cs, --custom-syntax <custom-syntax] [-mw, --max-warnings <max-warnings>] <paths/globs>`
 
 ## Configuration:
-
----
 
 **build-scripts.config.js**
 
