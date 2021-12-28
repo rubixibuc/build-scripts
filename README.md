@@ -5,13 +5,7 @@
 ## Usage
 
 ```shell
-> npx @rubixibuc/build-scripts [command] ↩
-```
-
-**or**
-
-```shell
-> npm i -D @rubixibuc/build-scripts ↩
+npm i -D @rubixibuc/build-scripts
 ```
 
 and add to package.json:
@@ -38,7 +32,7 @@ and add to package.json:
 **Outputs production build to /dist folder**
 
 ```shell
-> build-scripts build ↩
+build-scripts build
 ```
 
 ### \[eslint\]
@@ -46,7 +40,7 @@ and add to package.json:
 **Runs eslint against project files**
 
 ```shell
-> build-scripts eslint [-f, --fix] [-c, --cache] [-mw, --max-warnings <max-warnings>] <paths/globs> ↩
+build-scripts eslint [-f, --fix] [-c, --cache] [-mw, --max-warnings <max-warnings>] <paths/globs>
 ```
 
 ### \[prettier\]
@@ -54,7 +48,7 @@ and add to package.json:
 **Runs prettier against project files**
 
 ```shell
-> build-scripts prettier [-f, --fix] <paths/globs> ↩
+build-scripts prettier [-f, --fix] <paths/globs>
 ```
 
 ### \[run\]
@@ -64,7 +58,7 @@ and add to package.json:
 _if specified, command line port overrides setting from config_
 
 ```shell
-> build-scripts run [-p, --port <port>] ↩
+build-scripts run [-p, --port <port>]
 ```
 
 ### \[stylelint\]
@@ -72,7 +66,7 @@ _if specified, command line port overrides setting from config_
 **Runs stylelint against project files**
 
 ```shell
-> build-scripts stylelint [-f, --fix] [-cs, --custom-syntax <custom-syntax] [-mw, --max-warnings <max-warnings>] <paths/globs> ↩
+build-scripts stylelint [-f, --fix] [-cs, --custom-syntax <custom-syntax] [-mw, --max-warnings <max-warnings>] <paths/globs>
 ```
 
 ## Configuration:
