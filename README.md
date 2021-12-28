@@ -27,6 +27,7 @@ module.exports = {
   links: [], // injected link tags
   logo: "provided image", // favicons (all sizes generated)
   metas: [], // injected meta tags
+  modules: ["node_modules"], // webpack modules
   name: "myapp", // module-federation var name
   scripts: [], // injected script tags
   shared: {}, // module-federation shared modues
