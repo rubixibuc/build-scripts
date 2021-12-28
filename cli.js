@@ -7,6 +7,7 @@ program.version("0.0.0");
 program
   .command("eslint")
   .option("-f, --fix", "try fix")
+  .option("-c, --cache", "enable cache")
   .argument("<globs...>", "path globs")
   .action(require("./commands/eslint"));
 
