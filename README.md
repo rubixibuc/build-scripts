@@ -1,4 +1,6 @@
-# Scripts
+# 🔨 build-scripts 🧹
+
+_batteries included webpack with module federation build scripts_
 
 ## usage
 
