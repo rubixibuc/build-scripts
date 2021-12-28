@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 
+const version = require("./package.json").version;
+
 const { Command } = require("commander");
 const program = new Command();
-program.version("0.0.0");
+program.version(version);
 
 program.command("build").action(require("./commands/build"));
 
