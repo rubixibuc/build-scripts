@@ -5,24 +5,22 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
-module.exports = (
-  { port },
-  {
-    alias = {},
-    background = "#000",
-    entry = "./src/index",
-    exposes = {},
-    links = [],
-    logo = require.resolve("../assets/logo.png"),
-    metas = [],
-    modules = ["node_modules"],
-    name = "myapp",
-    scripts = [],
-    shared = {},
-    theme_color = "#fff",
-    title = "My App",
-  }
-) => ({
+module.exports = ({
+  alias = {},
+  background = "#000",
+  entry = "./src/index",
+  exposes = {},
+  links = [],
+  logo = require.resolve("../assets/logo.png"),
+  metas = [],
+  modules = ["node_modules"],
+  name = "myapp",
+  port,
+  scripts = [],
+  shared = {},
+  theme_color = "#fff",
+  title = "My App",
+} = {}) => ({
   devServer: {
     port,
     static: path.join(__dirname, "dist"),

@@ -4,10 +4,10 @@ module.exports = async (options) => {
   const explorer = cosmiconfig("build-scripts");
   const config = await explorer.search();
 
-  const webpackConfig = require("../configs/webpack.config")(
-    { ...options },
-    { ...(config && config.config) }
-  );
+  const webpackConfig = require("../configs/webpack.config")({
+    ...(config && config.config),
+    ...options,
+  });
 
   const Webpack = require("webpack");
 
