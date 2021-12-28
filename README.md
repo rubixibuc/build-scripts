@@ -6,6 +6,19 @@ _batteries included webpack with module federation build scripts_
 
 `npx @rubixibuc/build-scripts [command]`
 
+or
+
+`npm install --save-dev @rubixibuc/build-scripts`
+
+```json
+{
+  "scripts": {
+    "start": "build-scripts run",
+    "build": "build-scripts build"
+  }
+}
+```
+
 commands:
 
 - build
