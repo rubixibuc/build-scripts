@@ -6,7 +6,7 @@
 
 `> npx @rubixibuc/build-scripts [command]`
 
-or
+**or**
 
 `> npm i -D @rubixibuc/build-scripts`
 
@@ -67,7 +67,7 @@ _if specified, command line port overrides setting from config_
 
 _multiple config file formats are [supported](https://github.com/davidtheclark/cosmiconfig#explorersearch)_
 
-#### defaults
+#### example + defaults
 
 ```javascript
 module.exports = {
