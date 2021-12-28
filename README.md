@@ -4,11 +4,15 @@
 
 ## Usage
 
-`> npx @rubixibuc/build-scripts [command]`
+```shell
+> npx @rubixibuc/build-scripts [command] ↩
+```
 
 **or**
 
-`> npm i -D @rubixibuc/build-scripts`
+```shell
+> npm i -D @rubixibuc/build-scripts ↩
+```
 
 and add to package.json:
 
@@ -29,37 +33,47 @@ and add to package.json:
 - [run](#run)
 - [stylelint](#stylelint)
 
-### build
+### \[build\]
 
 **Outputs production build to /dist folder**
 
-`> build-scripts build`
+```shell
+> build-scripts build ↩
+```
 
-### eslint
+### \[eslint\]
 
 **Runs eslint against project files**
 
-`> build-scripts eslint [-f, --fix] [-c, --cache] [-mw, --max-warnings <max-warnings>] <paths/globs>`
+```shell
+> build-scripts eslint [-f, --fix] [-c, --cache] [-mw, --max-warnings <max-warnings>] <paths/globs> ↩
+```
 
-### prettier
+### \[prettier\]
 
 **Runs prettier against project files**
 
-`> build-scripts prettier [-f, --fix] <paths/globs>`
+```shell
+> build-scripts prettier [-f, --fix] <paths/globs> ↩
+```
 
-### run
+### \[run\]
 
 **Runs dev server**
 
 _if specified, command line port overrides setting from config_
 
-`> build-scripts run [-p, --port <port>]`
+```shell
+> build-scripts run [-p, --port <port>] ↩
+```
 
-### stylelint
+### \[stylelint\]
 
 **Runs stylelint against project files**
 
-`> build-scripts stylelint [-f, --fix] [-cs, --custom-syntax <custom-syntax] [-mw, --max-warnings <max-warnings>] <paths/globs>`
+```shell
+> build-scripts stylelint [-f, --fix] [-cs, --custom-syntax <custom-syntax] [-mw, --max-warnings <max-warnings>] <paths/globs> ↩
+```
 
 ## Configuration:
 
@@ -67,7 +81,7 @@ _if specified, command line port overrides setting from config_
 
 _multiple config file formats are [supported](https://github.com/davidtheclark/cosmiconfig#explorersearch)_
 
-#### example + defaults
+#### example + defaults 👇
 
 ```javascript
 module.exports = {
@@ -102,5 +116,5 @@ module.exports = {
 };
 ```
 
-see for injected tag documentation:
+_see for injected tag documentation_
 https://www.npmjs.com/package/html-webpack-tags-plugin
