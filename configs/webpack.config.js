@@ -15,7 +15,7 @@ module.exports = ({
   metas = [],
   modules = ["node_modules"],
   name = "myapp",
-  port,
+  port = 3000,
   scripts = [],
   shared = {},
   theme_color = "#fff",

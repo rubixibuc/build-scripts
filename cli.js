@@ -24,7 +24,7 @@ program
 
 program
   .command("run")
-  .option("-p, --port <port>", "port number", "3000")
+  .option("-p, --port <port>", "port number")
   .action(require("./commands/run"));
 
 program
