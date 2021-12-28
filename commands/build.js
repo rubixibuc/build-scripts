@@ -5,10 +5,13 @@ module.exports = async (options) => {
   const config = await explorer.search();
 
   const Webpack = require("webpack");
-  const webpackConfig = require("../configs/webpack.config");
+  const webpackConfig = require("../configs/webpack.config")(
+    { ...options },
+    { ...(config && config.config) }
+  );
 
   const compiler = Webpack({
-    ...webpackConfig({ ...options }, { ...config.config }),
+    ...webpackConfig,
     mode: "production",
   });
 

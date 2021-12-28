@@ -6,9 +6,12 @@ module.exports = async (options) => {
 
   const Webpack = require("webpack");
   const WebpackDevServer = require("webpack-dev-server");
-  const webpackConfig = require("../configs/webpack.config");
+  const webpackConfig = require("../configs/webpack.config")(
+    { ...options },
+    { ...(config && config.config) }
+  );
 
-  const compiler = Webpack(webpackConfig({ ...options }, { ...config.config }));
+  const compiler = Webpack(webpackConfig);
   const devServerOptions = { ...webpackConfig.devServer, open: true };
   const server = new WebpackDevServer(devServerOptions, compiler);
 
