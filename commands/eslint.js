@@ -2,7 +2,9 @@ module.exports = async (globs, options) => {
   const config = require("../configs/.eslintrc.json");
   const { ESLint } = require("eslint");
 
-  const eslint = new ESLint({ ...options, overrideConfig: config });
+  const { maxWarnings, ...filteredOptions } = options;
+
+  const eslint = new ESLint({ ...filteredOptions, overrideConfig: config });
 
   const results = await eslint.lintFiles(globs);
 
@@ -15,6 +17,18 @@ module.exports = async (globs, options) => {
 
   const filteredResults = ESLint.getErrorResults(results);
   if (filteredResults.some((lintResult) => !lintResult.fixableErrorCount)) {
+    process.exitCode = 1;
+  }
+
+  if (
+    maxWarnings &&
+    results.reduce(
+      (previousValue, currentValue) =>
+        previousValue +
+        (currentValue.warningCount - currentValue.fixableErrorCount),
+      0
+    ) > maxWarnings
+  ) {
     process.exitCode = 1;
   }
 

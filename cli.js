@@ -8,6 +8,7 @@ program
   .command("eslint")
   .option("-f, --fix", "try fix")
   .option("-c, --cache", "enable cache")
+  .option("-mw, --max-warnings <max-warnings>", "set max warnings")
   .argument("<globs...>", "path globs")
   .action(require("./commands/eslint"));
 
