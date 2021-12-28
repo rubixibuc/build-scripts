@@ -15,6 +15,7 @@ module.exports = (
     links = [],
     logo = require.resolve("../assets/logo.png"),
     metas = [],
+    modules = ["node_modules"],
     name = "myapp",
     scripts = [],
     shared = {},
@@ -152,5 +153,6 @@ module.exports = (
   ],
   resolve: {
     alias,
+    modules,
   },
 });
