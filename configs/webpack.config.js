@@ -45,7 +45,6 @@ module.exports = (
         type: "asset/resource",
       },
       {
-        test: /\.css$/i,
         oneOf: [
           {
             resourceQuery: /string/,
@@ -116,6 +115,7 @@ module.exports = (
             ],
           },
         ],
+        test: /\.css$/i,
       },
     ],
   },
