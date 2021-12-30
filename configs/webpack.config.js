@@ -9,6 +9,7 @@ module.exports = ({
   background = "#000",
   exposes,
   logo = require.resolve("../assets/logo.png"),
+  metas,
   name = "myapp",
   port,
   shared,
@@ -131,6 +132,7 @@ module.exports = ({
       title,
     }),
     new HtmlWebpackTagsPlugin({
+      metas,
       tags,
     }),
     new FaviconsWebpackPlugin({
