@@ -144,10 +144,6 @@ module.exports = ({
     }),
   ],
   resolve: {
-    modules: [
-      path.resolve(process.cwd(), "src"),
-      path.resolve(process.cwd(), "test"),
-      "node_modules",
-    ],
+    modules: [path.resolve("src"), path.resolve("test"), "node_modules"],
   },
 });
