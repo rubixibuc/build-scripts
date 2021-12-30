@@ -79,30 +79,20 @@ _multiple config file formats are [supported](https://github.com/davidtheclark/c
 
 ```javascript
 module.exports = {
-  // webpack aliases
-  alias: {},
   // app meta
   background: "#000",
-  // webpack entry
-  entry: "./src/index",
   // module-federation exposed paths
-  exposes: {},
-  // injected link tags
-  links: [],
+  exposes: undefined,
   // favicons (all sizes generated)
   logo: "<included image>",
-  // injected meta tags
-  metas: [],
-  // webpack modules
-  modules: ["node_modules"],
   // module-federation var name
   name: "myapp",
   // webpack dev server port
-  port: 3000,
-  // injected script tags
-  scripts: [],
+  port: 8080,
   // module-federation shared modues
-  shared: {},
+  shared: undefined,
+  // injected tags
+  tags: undefined,
   // app meta
   theme_color: "#fff",
   // site title
@@ -110,5 +100,5 @@ module.exports = {
 };
 ```
 
-_see for injected tag documentation_
+_see for injected tags documentation_
 https://www.npmjs.com/package/html-webpack-tags-plugin

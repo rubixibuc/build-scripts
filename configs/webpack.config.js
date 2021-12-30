@@ -6,18 +6,13 @@ const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
 module.exports = ({
-  alias = {},
   background = "#000",
-  entry = "./src/index",
-  exposes = {},
-  links = [],
+  exposes,
   logo = require.resolve("../assets/logo.png"),
-  metas = [],
-  modules = ["node_modules"],
   name = "myapp",
-  port = 3000,
-  scripts = [],
-  shared = {},
+  port,
+  shared,
+  tags,
   theme_color = "#fff",
   title = "My App",
 } = {}) => ({
@@ -25,7 +20,7 @@ module.exports = ({
     port,
     static: path.join(__dirname, "dist"),
   },
-  entry,
+  entry: "./src/index",
   mode: "development",
   module: {
     rules: [
@@ -136,9 +131,7 @@ module.exports = ({
       title,
     }),
     new HtmlWebpackTagsPlugin({
-      links,
-      metas,
-      scripts,
+      tags,
     }),
     new FaviconsWebpackPlugin({
       favicons: {
@@ -150,7 +143,10 @@ module.exports = ({
     }),
   ],
   resolve: {
-    alias,
-    modules,
+    modules: [
+      path.resolve(process.cwd(), "src"),
+      path.resolve(process.cwd(), "test"),
+      "node_modules",
+    ],
   },
 });
