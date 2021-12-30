@@ -21,7 +21,7 @@ module.exports = ({
     port,
     static: path.join(__dirname, "dist"),
   },
-  entry: "./src/index",
+  entry: [require.resolve("regenerator-runtime/runtime"), "./src/index"],
   mode: "development",
   module: {
     rules: [
