@@ -19,7 +19,6 @@ module.exports = ({
 } = {}) => ({
   devServer: {
     port,
-    static: path.join(__dirname, "dist"),
   },
   entry: [require.resolve("regenerator-runtime/runtime"), "./src/index"],
   mode: "development",
