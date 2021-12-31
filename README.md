@@ -106,7 +106,7 @@ module.exports = {
   // injected js, cs tags
   tags: undefined,
   // app meta
-  theme_color: "#fff",
+  themeColor: "#fff",
   // site title
   title: "My App",
   // module-federation var name
