@@ -6,16 +6,16 @@ const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
 module.exports = ({
-  background = "#000",
+  background,
   exposes,
   logo = require.resolve("../assets/logo.png"),
   metas,
-  name = "myapp",
   port,
   shared,
   tags,
-  theme_color = "#fff",
+  themeColor,
   title = "My App",
+  varName = "myapp",
 } = {}) => ({
   devServer: {
     port,
@@ -123,7 +123,7 @@ module.exports = ({
     new ModuleFederationPlugin({
       exposes,
       filename: "remoteEntry.js",
-      name,
+      name: varName,
       shared,
     }),
     new ExternalTemplateRemotesPlugin(),
@@ -137,7 +137,7 @@ module.exports = ({
     new FaviconsWebpackPlugin({
       favicons: {
         background,
-        theme_color,
+        theme_color: themeColor,
       },
       logo,
       prefix: "[contenthash]/",
