@@ -2,13 +2,22 @@
 
 **Batteries included webpack with module federation build scripts**
 
+## Quick Start
+
+- create entry file **./src/index.js**
+- optionally create **./build-scripts.config.js**
+
+```shell
+npx @rubixibuc/build-scripts run
+```
+
 ## Usage
 
 ```shell
 npm i -D @rubixibuc/build-scripts
 ```
 
-and add to package.json:
+and add to package.json
 
 ```json
 {
@@ -18,6 +27,9 @@ and add to package.json:
   }
 }
 ```
+
+- create entry file **./src/index.js**
+- optionally create **./build-scripts.config.js**
 
 ## Commands
 
