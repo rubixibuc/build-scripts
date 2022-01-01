@@ -39,8 +39,8 @@ and add to package.json
 
 - The following image types are supported (png,svg,jpg,jpeg,gif)
 - By default, css files are imported as constructable stylesheets
-  - Use `'./some.css?style'` to inject css as style tag
-  - Use `'./some.css?string'` to import css as string
+  - Use `"./some.css?style"` to inject css as style tag
+  - Use `"./some.css?string"` to import css as string
 - **More asset types will be supported soon**
 
 ## Example [lint-staged](https://github.com/okonet/lint-staged) Config
