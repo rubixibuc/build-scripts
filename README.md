@@ -31,6 +31,28 @@ and add to package.json
 - create entry file **./src/index.js**
 - optionally create **./build-scripts.config.js**
 
+## Example Project
+
+[https://github.com/rubixibuc/mf-heroku-demo](https://github.com/rubixibuc/mf-heroku-demo)
+
+## Importing Assets
+
+- The following image types are supported (png,svg,jpg,jpeg,gif)
+- By default, css files are imported as constructable stylesheets
+  - Use `'./some.css?style'` to inject css as style tag
+  - Use `'./some.css?string'` to import css as string
+- **More asset types will be supported soon**
+
+## Example [lint-staged](https://github.com/okonet/lint-staged) Config
+
+```json
+{
+  "*.js": ["build-scripts eslint --cache --fix"],
+  "*.css": "build-scripts stylelint --fix",
+  "*.{json,html,md}": "build-scripts prettier --fix"
+}
+```
+
 ## Commands
 
 - [build](#build)
