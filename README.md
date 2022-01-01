@@ -116,17 +116,17 @@ module.exports = {
   // app meta
   background: "#fff",
   // module-federation exposed paths
-  exposes: undefined,
+  exposes: {},
   // favicons (all sizes generated)
   logo: "<included image>",
   // injected meta tags,
-  metas: undefined,
+  metas: [],
   // webpack dev server port
   port: 8080,
   // module-federation shared modues
-  shared: undefined,
+  shared: {},
   // injected js, cs tags
-  tags: undefined,
+  tags: [],
   // app meta
   themeColor: "#fff",
   // site title
