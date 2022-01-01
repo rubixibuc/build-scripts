@@ -49,7 +49,7 @@ and add to package.json
 {
   "*.js": ["build-scripts eslint --cache --fix"],
   "*.css": "build-scripts stylelint --fix",
-  "*.{json,html,md}": "build-scripts prettier --fix"
+  "*.{json,md}": "build-scripts prettier --fix"
 }
 ```
 
