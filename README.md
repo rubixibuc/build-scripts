@@ -1,6 +1,6 @@
 # 🔨 build-scripts 🧹
 
-**Batteries included webpack with module federation build and linting scripts**
+**Batteries included [webpack](https://github.com/webpack/webpack) with [module federation](https://webpack.js.org/concepts/module-federation/) build and linting scripts**
 
 ## Quick Start
 
