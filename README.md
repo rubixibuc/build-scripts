@@ -123,6 +123,8 @@ module.exports = {
   metas: [],
   // webpack dev server port
   port: 8080,
+  // module-federation remotes
+  remotes: {},
   // module-federation shared modues
   shared: {},
   // injected js, cs tags
