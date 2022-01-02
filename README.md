@@ -100,7 +100,7 @@ build-scripts run [-p, --port <port>]
 **Runs stylelint against project files**
 
 ```shell
-build-scripts stylelint [-f, --fix] [-cs, --custom-syntax <custom-syntax] [-mw, --max-warnings <max-warnings>] <paths/globs>
+build-scripts stylelint [-f, --fix] [-cs, --custom-syntax <custom-syntax>] [-mw, --max-warnings <max-warnings>] <paths/globs>
 ```
 
 ## Configuration:
