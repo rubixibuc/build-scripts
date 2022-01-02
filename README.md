@@ -1,6 +1,6 @@
 # 🔨 build-scripts 🧹
 
-**Batteries included webpack with module federation build scripts**
+**Batteries included _webpack_ with _module federation_ _build_ and _linting_ scripts**
 
 ## Quick Start
 
@@ -115,7 +115,7 @@ _multiple config file formats are [supported](https://github.com/davidtheclark/c
 module.exports = {
   // app meta
   background: "#fff",
-  // module-federation exposed paths
+  // module federation exposed paths
   exposes: {},
   // favicons (all sizes generated)
   logo: "<included image>",
@@ -123,9 +123,9 @@ module.exports = {
   metas: [],
   // webpack dev server port
   port: 8080,
-  // module-federation remotes
+  // module federation remotes
   remotes: {},
-  // module-federation shared modues
+  // module federation shared modues
   shared: {},
   // injected js, cs tags
   tags: [],
@@ -133,7 +133,7 @@ module.exports = {
   themeColor: "#fff",
   // site title
   title: "My App",
-  // module-federation var name
+  // module federation var name
   varName: "myapp",
 };
 ```
