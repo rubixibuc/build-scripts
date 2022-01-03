@@ -146,6 +146,6 @@ module.exports = ({
     }),
   ],
   resolve: {
-    modules: [path.resolve("src"), path.resolve("test"), "node_modules"],
+    modules: [path.resolve("src"), "node_modules"],
   },
 });
