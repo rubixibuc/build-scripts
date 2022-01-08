@@ -4,6 +4,7 @@ const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+const InjectBodyPlugin = require("inject-body-webpack-plugin").default;
 
 module.exports = ({
   background,
@@ -143,6 +144,9 @@ module.exports = ({
       },
       logo,
       prefix: "[contenthash]/",
+    }),
+    new InjectBodyPlugin({
+      content: '<div id="root" style="display: contents;"></div>',
     }),
   ],
   resolve: {
