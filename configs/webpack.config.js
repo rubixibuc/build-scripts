@@ -21,6 +21,7 @@ module.exports = ({
 } = {}) => ({
   devServer: {
     allowedHosts: [".loca.lt", ".ngrok.io"],
+    historyApiFallback: true,
     port,
   },
   entry: [require.resolve("regenerator-runtime/runtime"), "./src/index"],
@@ -38,8 +39,16 @@ module.exports = ({
         },
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        scheme: "data",
+        type: "asset/inline",
+      },
+      {
+        scheme: "url",
         type: "asset/resource",
+      },
+      {
+        scheme: "raw",
+        type: "asset/source",
       },
       {
         oneOf: [
