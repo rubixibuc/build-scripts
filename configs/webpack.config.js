@@ -39,21 +39,21 @@ module.exports = ({
         },
       },
       {
-        resourceQuery: /inline/,
+        resourceQuery: /^\?inline/,
         type: "asset/inline",
       },
       {
-        resourceQuery: /resource/,
+        resourceQuery: /^\?resource/,
         type: "asset/resource",
       },
       {
-        resourceQuery: /source/,
+        resourceQuery: /^\?source/,
         type: "asset/source",
       },
       {
         oneOf: [
           {
-            resourceQuery: /string/,
+            resourceQuery: /^\?string/,
             use: [
               {
                 loader: require.resolve("css-loader"),
@@ -76,7 +76,7 @@ module.exports = ({
             ],
           },
           {
-            resourceQuery: /style/,
+            resourceQuery: /^\?style/,
             use: [
               require.resolve("style-loader"),
               {
