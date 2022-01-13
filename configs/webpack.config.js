@@ -20,6 +20,7 @@ module.exports = ({
   varName = "myapp",
 } = {}) => ({
   devServer: {
+    allowedHosts: [".loca.lt", ".ngrok.io"],
     port,
   },
   entry: [require.resolve("regenerator-runtime/runtime"), "./src/index"],
