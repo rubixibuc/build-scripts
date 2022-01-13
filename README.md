@@ -40,13 +40,13 @@ and add to package.json
 **All asset types are supported according to the following rules**
 
 ```javascript
-import ref from "some-asset.png?inline";
+import ref from "./some-asset.png?inline";
 // ref === "data:[...]"
 
-import ref from "some-asset.png?resource";
+import ref from "./some-asset.png?resource";
 // ref === "[...]/some-asset.1234.png?resource"
 
-import ref from "some-asset.txt?source";
+import ref from "./some-asset.txt?source";
 // ref === "contents of file"
 ```
 
