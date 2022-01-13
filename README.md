@@ -37,11 +37,18 @@ and add to package.json
 
 ## Importing Assets
 
-- The following image types are supported (png,svg,jpg,jpeg,gif)
-- By default, css files are imported as constructable stylesheets
-  - Use `"./some.css?style"` to inject css as style tag
-  - Use `"./some.css?string"` to import css as string
-- **More asset types will be supported soon**
+**All asset types are supported according to the following rules**
+
+```javascript
+import ref from "some-asset.png?inline";
+// ref === "data:[...]"
+
+import ref from "some-asset.png?resource";
+// ref === "[...]/some-asset.1234.png?resource"
+
+import ref from "some-asset.txt?source";
+// ref === "contents of file"
+```
 
 ## Example [lint-staged](https://github.com/okonet/lint-staged) Config
 
@@ -117,6 +124,8 @@ module.exports = {
   background: "#fff",
   // module federation exposed paths
   exposes: {},
+  // inject link tags,
+  links: [],
   // favicons (all sizes generated)
   logo: "<included image>",
   // injected meta tags,
@@ -125,10 +134,10 @@ module.exports = {
   port: 8080,
   // module federation remotes
   remotes: {},
+  // injected script tags
+  scripts: [],
   // module federation shared modues
   shared: {},
-  // injected js, cs tags
-  tags: [],
   // app meta
   themeColor: "#fff",
   // site title

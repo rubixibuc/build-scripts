@@ -9,12 +9,13 @@ const InjectBodyPlugin = require("inject-body-webpack-plugin").default;
 module.exports = ({
   background,
   exposes,
+  links,
   logo = require.resolve("../assets/logo.png"),
   metas,
   port,
   remotes,
+  scripts,
   shared,
-  tags,
   themeColor,
   title = "My App",
   varName = "myapp",
@@ -144,8 +145,9 @@ module.exports = ({
       title,
     }),
     new HtmlWebpackTagsPlugin({
+      links,
       metas,
-      tags,
+      scripts,
     }),
     new FaviconsWebpackPlugin({
       favicons: {
