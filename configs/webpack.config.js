@@ -39,15 +39,15 @@ module.exports = ({
         },
       },
       {
-        scheme: "data",
+        resourceQuery: /url/,
         type: "asset/inline",
       },
       {
-        scheme: "url",
+        resourceQuery: /file/,
         type: "asset/resource",
       },
       {
-        scheme: "raw",
+        resourceQuery: /raw/,
         type: "asset/source",
       },
       {
