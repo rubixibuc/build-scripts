@@ -5,7 +5,7 @@
 ## Quick Start
 
 - create entry file **./src/index.js**
-- optionally create **./build-scripts.config.js**
+- optionally create [configuraiton file](#configuration)
 
 ```shell
 npx @rubixibuc/build-scripts run
@@ -29,7 +29,7 @@ and add to package.json
 ```
 
 - create entry file **./src/index.js**
-- optionally create **./build-scripts.config.js**
+- optionally create [configuraiton file](#configuration)
 
 ## Example Project
 
