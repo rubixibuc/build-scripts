@@ -40,14 +40,28 @@ and add to package.json
 **All asset types are supported according to the following rules**
 
 ```javascript
-import ref from "./some-asset.png?inline";
-// ref === "data:[...]"
+import exp from "./some-asset.png?inline";
+// exp === "data:[...]"
 
-import ref from "./some-asset.png?resource";
-// ref === "[...]/some-asset.1234.png?resource"
+import exp from "./some-asset.png?resource";
+// exp === "[...]/some-asset.1234.png?resource"
 
-import ref from "./some-asset.txt?source";
-// ref === "contents of file"
+import exp from "./some-asset.txt?source";
+// exp === "contents of file"
+```
+
+**Specific rules for \*.css imports**
+
+```javascript
+import exp from "./some-style.css?string";
+// exp === "contents of file"
+
+import "./some-style.css?style";
+// inject as style tag
+
+import exp from "./some-style.css";
+// exp === new CSSStyleSheet()
+// https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet
 ```
 
 ## Example [lint-staged](https://github.com/okonet/lint-staged) Config
