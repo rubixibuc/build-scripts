@@ -40,15 +40,15 @@ module.exports = ({
         },
       },
       {
-        resourceQuery: /^\?inline/,
+        resourceQuery: /^\?data/,
         type: "asset/inline",
       },
       {
-        resourceQuery: /^\?resource/,
+        resourceQuery: /^\?file/,
         type: "asset/resource",
       },
       {
-        resourceQuery: /^\?source/,
+        resourceQuery: /^\?string/,
         type: "asset/source",
       },
       {
