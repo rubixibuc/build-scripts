@@ -48,7 +48,7 @@ module.exports = ({
         type: "asset/resource",
       },
       {
-        resourceQuery: /^\?string/,
+        resourceQuery: /^\?source/,
         type: "asset/source",
       },
       {

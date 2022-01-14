@@ -46,7 +46,7 @@ import exp from "./some-asset.png?data";
 import exp from "./some-asset.png?file";
 // exp === "[...]/some-asset.1234.png?file"
 
-import exp from "./some-asset.txt?string";
+import exp from "./some-asset.txt?source";
 // exp === "contents of file"
 ```
 
