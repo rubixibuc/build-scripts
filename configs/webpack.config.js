@@ -1,4 +1,5 @@
 const path = require("path");
+const Dotenv = require("dotenv-webpack");
 const { ModuleFederationPlugin } = require("webpack").container;
 const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -133,6 +134,10 @@ module.exports = ({
     publicPath: "auto",
   },
   plugins: [
+    new Dotenv({
+      expand: true,
+      systemvars: true,
+    }),
     new ModuleFederationPlugin({
       exposes,
       filename: "remoteEntry.js",
