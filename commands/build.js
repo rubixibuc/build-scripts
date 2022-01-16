@@ -13,6 +13,7 @@ module.exports = async (options) => {
 
   const compiler = Webpack({
     ...webpackConfig,
+    devtool: false,
     mode: "production",
   });
 

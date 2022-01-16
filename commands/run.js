@@ -12,7 +12,7 @@ module.exports = async (options) => {
   const Webpack = require("webpack");
   const WebpackDevServer = require("webpack-dev-server");
 
-  const compiler = Webpack(webpackConfig);
+  const compiler = Webpack({ ...webpackConfig, devtool: "source-map" });
   const devServerOptions = { ...webpackConfig.devServer, open: true };
   const server = new WebpackDevServer(devServerOptions, compiler);
 
