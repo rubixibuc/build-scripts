@@ -11,7 +11,7 @@ module.exports = ({
   background,
   exposes,
   links = [],
-  logo = require.resolve("../assets/logo.png"),
+  logo = require.resolve("../images/logo.png"),
   metas,
   port,
   remotes,
