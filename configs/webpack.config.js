@@ -1,4 +1,5 @@
 const path = require("path");
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 const { ModuleFederationPlugin } = require("webpack").container;
 const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
@@ -125,6 +126,22 @@ module.exports = ({
         ],
         test: /\.css$/i,
       },
+    ],
+  },
+  optimization: {
+    minimizer: [
+      "...",
+      new ImageMinimizerPlugin({
+        generator: [
+          {
+            implementation: ImageMinimizerPlugin.imageminGenerate,
+            options: {
+              plugins: [["imagemin-webp", { size: 10000 }]],
+            },
+            preset: "webp",
+          },
+        ],
+      }),
     ],
   },
   output: {
