@@ -147,6 +147,7 @@ module.exports = ({
     }),
     new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({
+      base: "/",
       title,
     }),
     new HtmlWebpackTagsPlugin({
