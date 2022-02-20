@@ -136,7 +136,7 @@ module.exports = ({
           {
             implementation: ImageMinimizerPlugin.imageminGenerate,
             options: {
-              plugins: [["imagemin-webp", { quality: 50 }]],
+              plugins: ["imagemin-webp"],
             },
             preset: "webp",
           },
