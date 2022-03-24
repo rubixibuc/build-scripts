@@ -150,7 +150,7 @@ module.exports = {
   remotes: {},
   // injected script tags
   scripts: [],
-  // module federation shared modues
+  // module federation shared modules
   shared: {},
   // app meta
   themeColor: "#fff",
