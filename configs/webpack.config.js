@@ -15,7 +15,7 @@ module.exports = ({
   links = [],
   logo = require.resolve("../logo.png"),
   metas,
-  obfuscator = { optionsPreset: "medium-obfuscation" },
+  obfuscator = "medium-obfuscation",
   port,
   remotes,
   scripts = [],
@@ -36,18 +36,12 @@ module.exports = ({
       {
         exclude: /node_modules/,
         test: /\.js$/i,
-        use: [
-          {
-            loader: WebpackObfuscator.loader,
-            options: obfuscator,
+        use: {
+          loader: require.resolve("babel-loader"),
+          options: {
+            presets: [require.resolve("@babel/preset-env")],
           },
-          {
-            loader: require.resolve("babel-loader"),
-            options: {
-              presets: [require.resolve("@babel/preset-env")],
-            },
-          },
-        ],
+        },
       },
       {
         resourceQuery: /^\?data/,
@@ -162,6 +156,9 @@ module.exports = ({
     new Dotenv({
       expand: true,
       systemvars: true,
+    }),
+    new WebpackObfuscator({
+      optionsPreset: obfuscator,
     }),
     new ModuleFederationPlugin({
       exposes,
