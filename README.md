@@ -145,7 +145,7 @@ module.exports = {
   // injected meta tags,
   metas: [],
   // see: https://obfuscator.io/
-  obfuscation: {},
+  obfuscator: {},
   // webpack dev server port
   port: 8080,
   // module federation remotes

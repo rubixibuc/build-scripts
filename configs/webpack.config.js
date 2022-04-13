@@ -15,7 +15,7 @@ module.exports = ({
   links = [],
   logo = require.resolve("../logo.png"),
   metas,
-  obfuscation,
+  obfuscator = { optionsPreset: "medium-obfuscation" },
   port,
   remotes,
   scripts = [],
@@ -36,12 +36,18 @@ module.exports = ({
       {
         exclude: /node_modules/,
         test: /\.js$/i,
-        use: {
-          loader: require.resolve("babel-loader"),
-          options: {
-            presets: [require.resolve("@babel/preset-env")],
+        use: [
+          {
+            loader: WebpackObfuscator.loader,
+            options: obfuscator,
           },
-        },
+          {
+            loader: require.resolve("babel-loader"),
+            options: {
+              presets: [require.resolve("@babel/preset-env")],
+            },
+          },
+        ],
       },
       {
         resourceQuery: /^\?data/,
@@ -184,12 +190,6 @@ module.exports = ({
     }),
     new InjectBodyPlugin({
       content: '<div id="root" style="display: contents;"></div>',
-    }),
-    new WebpackObfuscator({
-      splitStrings: true,
-      splitStringsChunkLength: 1,
-      stringArrayEncoding: ["base64", "rc4"],
-      ...obfuscation,
     }),
   ],
   resolve: {
