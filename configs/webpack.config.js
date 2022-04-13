@@ -15,7 +15,7 @@ module.exports = ({
   links = [],
   logo = require.resolve("../logo.png"),
   metas,
-  obfuscation = "medium-obfuscation",
+  obfuscation,
   port,
   remotes,
   scripts = [],
@@ -186,7 +186,10 @@ module.exports = ({
       content: '<div id="root" style="display: contents;"></div>',
     }),
     new WebpackObfuscator({
-      optionsPreset: obfuscation,
+      splitStrings: true,
+      splitStringsChunkLength: 1,
+      stringArrayEncoding: ["base64", "rc4"],
+      ...obfuscation,
     }),
   ],
   resolve: {
