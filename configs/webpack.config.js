@@ -7,6 +7,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const InjectBodyPlugin = require("inject-body-webpack-plugin").default;
+const WebpackObfuscator = require("webpack-obfuscator");
 
 module.exports = ({
   background,
@@ -14,6 +15,7 @@ module.exports = ({
   links = [],
   logo = require.resolve("../logo.png"),
   metas,
+  obfuscation = "medium-obfuscation",
   port,
   remotes,
   scripts = [],
@@ -182,6 +184,9 @@ module.exports = ({
     }),
     new InjectBodyPlugin({
       content: '<div id="root" style="display: contents;"></div>',
+    }),
+    new WebpackObfuscator({
+      optionsPreset: obfuscation,
     }),
   ],
   resolve: {
