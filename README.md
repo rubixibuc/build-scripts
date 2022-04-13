@@ -144,7 +144,7 @@ module.exports = {
   logo: "<included image>",
   // injected meta tags,
   metas: [],
-  // see https://obfuscator.io/ (optionsPreset)
+  // see: https://obfuscator.io/ (optionsPreset)
   obfuscation: "medium-obfuscation",
   // webpack dev server port
   port: 8080,
