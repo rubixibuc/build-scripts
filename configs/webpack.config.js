@@ -43,6 +43,17 @@ module.exports = ({
           },
         },
       },
+      obfuscator && {
+        enforce: "post",
+        test: /\.js$/i,
+        use: {
+          loader: WebpackObfuscator.loader,
+          options: {
+            ...obfuscator,
+            ignoreImports: true,
+          },
+        },
+      },
       {
         resourceQuery: /^\?data/,
         type: "asset/inline",
@@ -128,7 +139,7 @@ module.exports = ({
         ],
         test: /\.css$/i,
       },
-    ],
+    ].filter(Boolean),
   },
   optimization: {
     minimizer: [
@@ -157,7 +168,6 @@ module.exports = ({
       expand: true,
       systemvars: true,
     }),
-    obfuscator && new WebpackObfuscator(obfuscator),
     new ModuleFederationPlugin({
       exposes,
       filename: "remoteEntry.js",
@@ -186,7 +196,7 @@ module.exports = ({
     new InjectBodyPlugin({
       content: '<div id="root" style="display: contents;"></div>',
     }),
-  ].filter(Boolean),
+  ],
   resolve: {
     modules: [path.resolve("src"), "node_modules"],
   },
