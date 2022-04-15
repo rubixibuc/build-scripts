@@ -141,9 +141,14 @@ module.exports = {
   // inject link tags,
   links: [],
   // favicons (all sizes generated)
-  logo: "<included image>",
+  // undefined = "<included image>"
+  logo: void 0,
   // injected meta tags,
   metas: [],
+  // obfuscator options see: https://github.com/javascript-obfuscator/webpack-obfuscator#obfuscatoroptions
+  // falsey = disabled
+  // {} = options
+  obfuscator: false,
   // webpack dev server port
   port: 8080,
   // module federation remotes
