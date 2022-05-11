@@ -201,7 +201,7 @@ module.exports = ({
     modules: [path.resolve("src"), "node_modules"],
     fallback: {
       assert: require.resolve('assert'),
-      buffer: require.resolve('buffer'),
+      Buffer: require.resolve('buffer'),
       console: require.resolve('console-browserify'),
       constants: require.resolve('constants-browserify'),
       crypto: require.resolve('crypto-browserify'),
