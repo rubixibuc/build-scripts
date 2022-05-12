@@ -1,6 +1,7 @@
 const path = require("path");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
+const webpack = require("webpack");
 const { ModuleFederationPlugin } = require("webpack").container;
 const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -29,7 +30,7 @@ module.exports = ({
     historyApiFallback: true,
     port,
   },
-  entry: [require.resolve("regenerator-runtime/runtime"), "./src/index"],
+  entry: "./src/index",
   mode: "development",
   module: {
     rules: [
@@ -39,7 +40,15 @@ module.exports = ({
         use: {
           loader: require.resolve("babel-loader"),
           options: {
-            presets: [require.resolve("@babel/preset-env")],
+            presets: [
+              [
+                require.resolve("@babel/preset-env"),
+                {
+                  corejs: 3,
+                  useBuiltIns: "usage",
+                },
+              ],
+            ],
           },
         },
       },
@@ -164,6 +173,10 @@ module.exports = ({
     publicPath: "auto",
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      Buffer: ["buffer", "Buffer"],
+      process: "process/browser",
+    }),
     new Dotenv({
       expand: true,
       systemvars: true,
@@ -198,31 +211,31 @@ module.exports = ({
     }),
   ],
   resolve: {
-    modules: [path.resolve("src"), "node_modules"],
     fallback: {
-      assert: require.resolve('assert'),
-      Buffer: require.resolve('buffer'),
-      console: require.resolve('console-browserify'),
-      constants: require.resolve('constants-browserify'),
-      crypto: require.resolve('crypto-browserify'),
-      domain: require.resolve('domain-browser'),
-      events: require.resolve('events'),
-      http: require.resolve('stream-http'),
-      https: require.resolve('https-browserify'),
-      os: require.resolve('os-browserify/browser'),
-      path: require.resolve('path-browserify'),
-      punycode: require.resolve('punycode'),
-      process: require.resolve('process/browser'),
-      querystring: require.resolve('querystring-es3'),
-      stream: require.resolve('stream-browserify'),
-      string_decoder: require.resolve('string_decoder'),
-      sys: require.resolve('util'),
-      timers: require.resolve('timers-browserify'),
-      tty: require.resolve('tty-browserify'),
-      url: require.resolve('url'),
-      util: require.resolve('util'),
-      vm: require.resolve('vm-browserify'),
-      zlib: require.resolve('browserify-zlib'),
+      assert: require.resolve("assert"),
+      buffer: require.resolve("buffer"),
+      console: require.resolve("console-browserify"),
+      constants: require.resolve("constants-browserify"),
+      crypto: require.resolve("crypto-browserify"),
+      domain: require.resolve("domain-browser"),
+      events: require.resolve("events"),
+      http: require.resolve("stream-http"),
+      https: require.resolve("https-browserify"),
+      os: require.resolve("os-browserify/browser"),
+      path: require.resolve("path-browserify"),
+      process: require.resolve("process/browser"),
+      punycode: require.resolve("punycode"),
+      querystring: require.resolve("querystring-es3"),
+      stream: require.resolve("stream-browserify"),
+      string_decoder: require.resolve("string_decoder"),
+      sys: require.resolve("util"),
+      timers: require.resolve("timers-browserify"),
+      tty: require.resolve("tty-browserify"),
+      url: require.resolve("url"),
+      util: require.resolve("util"),
+      vm: require.resolve("vm-browserify"),
+      zlib: require.resolve("browserify-zlib"),
     },
+    modules: [path.resolve("src"), "node_modules"],
   },
 });
