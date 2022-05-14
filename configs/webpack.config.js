@@ -2,6 +2,7 @@ const path = require("path");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 const webpack = require("webpack");
+const deps = require("../package.json").dependencies;
 const { ModuleFederationPlugin } = require("webpack").container;
 const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -30,7 +31,7 @@ module.exports = ({
     historyApiFallback: true,
     port,
   },
-  entry: "./src/index",
+  entry: require.resolve("../index.js"),
   mode: "development",
   module: {
     rules: [
@@ -186,7 +187,41 @@ module.exports = ({
       filename: "remoteEntry.js",
       name: varName,
       remotes,
-      shared,
+      shared: {
+        ...Object.entries({
+          assert: { requiredVersion: deps["assert"] },
+          buffer: { requiredVersion: deps["buffer"] },
+          console: { requiredVersion: deps["console-browserify"] },
+          constants: { requiredVersion: deps["constants-browserify"] },
+          "core-js/": { requiredVersion: deps["core-js"] },
+          crypto: { requiredVersion: deps["crypto-browserify"] },
+          domain: { requiredVersion: deps["domain-browser"] },
+          events: { requiredVersion: deps["events"] },
+          http: { requiredVersion: deps["stream-http"] },
+          https: { requiredVersion: deps["https-browserify"] },
+          os: { requiredVersion: deps["os-browserify"] },
+          path: { requiredVersion: deps["path-browserify"] },
+          process: { requiredVersion: deps["process"] },
+          punycode: { requiredVersion: deps["punycode"] },
+          querystring: { requiredVersion: deps["querystring-es3"] },
+          stream: { requiredVersion: deps["stream-browserify"] },
+          string_decoder: { requiredVersion: deps["string_decoder"] },
+          sys: { requiredVersion: deps["util"] },
+          timers: { requiredVersion: deps["timers-browserify"] },
+          tty: { requiredVersion: deps["tty-browserify"] },
+          url: { requiredVersion: deps["url"] },
+          util: { requiredVersion: deps["util"] },
+          vm: { requiredVersion: deps["vm-browserify"] },
+          zlib: { requiredVersion: deps["browserify-zlib"] },
+        }).reduce(
+          (shared, [module, options]) => ({
+            ...shared,
+            [module]: { ...options, singleton: true },
+          }),
+          {}
+        ),
+        ...shared,
+      },
     }),
     new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({
