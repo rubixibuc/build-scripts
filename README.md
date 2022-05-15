@@ -4,7 +4,7 @@
 
 ## Quick Start
 
-- create entry file **./src/index.js**
+- create entry file **./src/bootstrap.js**
 - optionally create [configuraiton file](#configuration)
 
 ```shell
@@ -28,7 +28,7 @@ and add to package.json
 }
 ```
 
-- create entry file **./src/index.js**
+- create entry file **./src/bootstrap.js**
 - optionally create [configuraiton file](#configuration)
 
 ## Example Project
@@ -48,6 +48,9 @@ import exp from "./some-asset.png?file";
 
 import exp from "./some-asset.txt?source";
 // exp === "contents of file"
+
+import exp from "./some-image.png?file&as=webp";
+// exp === "[...]/some-image.1234.webp"
 ```
 
 **Specific rules for \*.css imports**
