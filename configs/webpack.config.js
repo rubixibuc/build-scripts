@@ -17,7 +17,7 @@ module.exports = ({
   logo = require.resolve("../logo.png"),
   metas,
   obfuscator,
-  polyfill = true,
+  polyfill = "entry",
   port,
   remotes,
   scripts = [],
@@ -32,7 +32,7 @@ module.exports = ({
     port,
   },
   entry: [
-    polyfill && require.resolve("../polyfill.js"),
+    polyfill === "entry" && require.resolve("../polyfill.js"),
     require.resolve("../index.js"),
   ].filter(Boolean),
   mode: "development",

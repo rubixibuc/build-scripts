@@ -152,6 +152,12 @@ module.exports = {
   // falsey = disabled
   // {} = options
   obfuscator: false,
+  // include entry web polyfill
+  // manually import with  @rubixibuc/build-scripts/polyfill
+  // choices: ["entry", false]
+  // "entry" = include entry web polyfill
+  // false = no web polyfill
+  polyfill: "entry",
   // webpack dev server port
   port: 8080,
   // module federation remotes
