@@ -11,6 +11,13 @@
 npx @rubixibuc/build-scripts run
 ```
 
+or
+
+```shell
+npm i -g @rubixibuc/build-scripts
+build-scripts run
+```
+
 ## Usage
 
 ```shell
