@@ -114,7 +114,7 @@ module.exports = {
   // {} = options
   obfuscator: false,
   // includes both "core-js/stable" and "regenerator-runtime/runtime"
-  // manually import "@rubixibuc/build-scripts/polyfill"
+  // import "@rubixibuc/build-scripts/polyfill" to include manually
   // choices: ["entry", false]
   // "entry" = include entry web polyfill
   // false = no web polyfill
