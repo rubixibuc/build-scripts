@@ -22,7 +22,7 @@
   ```shell
   npm i -D @rubixibuc/build-scripts
   ```
-- and add `start` and `build` scripts to package.json:
+- add `start` and `build` scripts to package.json:
   ```json
   {
     "scripts": {
@@ -47,9 +47,6 @@ import exp from "./some-asset.png?file";
 
 import exp from "./some-asset.txt?source";
 // exp === "contents of file"
-
-import exp from "./some-image.png?file&as=webp";
-// exp === "[...]/some-image.1234.webp"
 ```
 
 **Specific rules for \*.css imports**
@@ -66,14 +63,11 @@ import "./some-style.css?style";
 // load style
 ```
 
-## Example [lint-staged](https://github.com/okonet/lint-staged) Config
+**Additional rule for creating webp format images**
 
-```json
-{
-  "*.js": "build-scripts eslint --cache --fix",
-  "*.css": "build-scripts stylelint --fix",
-  "*.{json,md}": "build-scripts prettier --fix"
-}
+```javascript
+import exp from "./some-image.png?file&as=webp";
+// exp === "[...]/some-image.1234.webp"
 ```
 
 ## Commands
@@ -132,11 +126,11 @@ build-scripts stylelint [-f, --fix] [-cs, --custom-syntax <custom-syntax>] [-mw,
 
 ## Configuration:
 
-**build-scripts.config.js**
+### build-scripts.config.js
 
 _multiple config file formats are [supported](https://github.com/davidtheclark/cosmiconfig#explorersearch)_
 
-#### example + defaults 👇
+example + defaults 👇
 
 ```javascript
 module.exports = {
@@ -180,3 +174,13 @@ module.exports = {
 
 _see for injected tags documentation_
 https://www.npmjs.com/package/html-webpack-tags-plugin
+
+### Example [lint-staged](https://github.com/okonet/lint-staged) Config
+
+```json
+{
+  "*.js": "build-scripts eslint --cache --fix",
+  "*.css": "build-scripts stylelint --fix",
+  "*.{json,md}": "build-scripts prettier --fix"
+}
+```
