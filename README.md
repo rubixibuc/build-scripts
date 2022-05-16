@@ -33,6 +33,8 @@ and add to package.json
 
 ## Example Project [yeoman](https://yeoman.io/) Generator
 
+_Generates example module federation project using [hybrids](https://hybrids.js.org/) web components and [vaadin router](https://vaadin.com/router)._
+
 [@rubixibuc/generator-sites](https://www.npmjs.com/package/@rubixibuc/generator-sites)
 
 ## Importing Assets
