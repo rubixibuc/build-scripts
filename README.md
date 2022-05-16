@@ -31,7 +31,7 @@ and add to package.json
 - create entry file **./src/bootstrap.js**
 - optionally create [configuration file](#configuration)
 
-## Example Project Yeoman Generator
+## Example Project [yeoman](https://yeoman.io/) Generator
 
 [@rubixibuc/generator-sites](https://www.npmjs.com/package/@rubixibuc/generator-sites)
 
