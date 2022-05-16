@@ -4,7 +4,7 @@
 
 ## Quick Start
 
-- create entry file **./src/bootstrap.js**
+- create **./src/bootstrap.js** entry file
 - optionally create [configuration file](#configuration)
 - run directly:
   ```shell
@@ -18,7 +18,7 @@
 
 ## Usage
 
-- create entry file **./src/bootstrap.js**
+- create **./src/bootstrap.js** entry file
 - optionally create [configuration file](#configuration)
 - add dependency to project:
   ```shell
