@@ -6,43 +6,33 @@
 
 - create entry file **./src/bootstrap.js**
 - optionally create [configuration file](#configuration)
-
-```shell
-npx @rubixibuc/build-scripts run
-```
-
-or
-
-```shell
-npm i -g @rubixibuc/build-scripts
-build-scripts run
-```
+- run directly:
+  ```shell
+  npx @rubixibuc/build-scripts run
+  ```
+  or install globally:
+  ```shell
+  npm i -g @rubixibuc/build-scripts
+  build-scripts run
+  ```
 
 ## Usage
 
-```shell
-npm i -D @rubixibuc/build-scripts
-```
-
-and add to package.json
-
-```json
-{
-  "scripts": {
-    "start": "build-scripts run",
-    "build": "build-scripts build"
+- add dependency to project:
+  ```shell
+  npm i -D @rubixibuc/build-scripts
+  ```
+- and add `start` and `build` scripts to package.json:
+  ```json
+  {
+    "scripts": {
+      "start": "build-scripts run",
+      "build": "build-scripts build"
+    }
   }
-}
-```
-
+  ```
 - create entry file **./src/bootstrap.js**
 - optionally create [configuration file](#configuration)
-
-## Example Project [yeoman](https://yeoman.io/) Generator
-
-_Generates example module federation project using [hybrids](https://hybrids.js.org/) web components and [vaadin router](https://vaadin.com/router)._
-
-[@rubixibuc/generator-sites](https://www.npmjs.com/package/@rubixibuc/generator-sites)
 
 ## Importing Assets
 
@@ -70,10 +60,10 @@ import exp from "./some-style.css";
 // https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet
 
 import exp from "./some-style.css?string";
-// exp === "contents of file"
+// exp === "processed css as string"
 
 import "./some-style.css?style";
-// inject as style tag
+// load style
 ```
 
 ## Example [lint-staged](https://github.com/okonet/lint-staged) Config
@@ -87,6 +77,10 @@ import "./some-style.css?style";
 ```
 
 ## Commands
+
+```shell
+build-scripts [command]
+```
 
 - [build](#build)
 - [eslint](#eslint)
