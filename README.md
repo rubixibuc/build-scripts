@@ -18,6 +18,8 @@
 
 ## Usage
 
+- create entry file **./src/bootstrap.js**
+- optionally create [configuration file](#configuration)
 - add dependency to project:
   ```shell
   npm i -D @rubixibuc/build-scripts
@@ -31,44 +33,6 @@
     }
   }
   ```
-- create entry file **./src/bootstrap.js**
-- optionally create [configuration file](#configuration)
-
-## Importing Assets
-
-**All asset types are supported according to the following rules**
-
-```javascript
-import exp from "./some-asset.png?data";
-// exp === "data:[...]"
-
-import exp from "./some-asset.png?file";
-// exp === "[...]/some-asset.1234.png?file"
-
-import exp from "./some-asset.txt?source";
-// exp === "contents of file"
-```
-
-**Specific rules for \*.css imports**
-
-```javascript
-import exp from "./some-style.css";
-// exp === new CSSStyleSheet()
-// https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet
-
-import exp from "./some-style.css?string";
-// exp === "processed css as string"
-
-import "./some-style.css?style";
-// load style
-```
-
-**Additional rule for creating webp format images**
-
-```javascript
-import exp from "./some-image.png?file&as=webp";
-// exp === "[...]/some-image.1234.webp"
-```
 
 ## Commands
 
@@ -183,4 +147,40 @@ https://www.npmjs.com/package/html-webpack-tags-plugin
   "*.css": "build-scripts stylelint --fix",
   "*.{json,md}": "build-scripts prettier --fix"
 }
+```
+
+## Importing Assets
+
+**All asset types are supported according to the following rules**
+
+```javascript
+import exp from "./some-asset.png?data";
+// exp === "data:[...]"
+
+import exp from "./some-asset.png?file";
+// exp === "[...]/some-asset.1234.png?file"
+
+import exp from "./some-asset.txt?source";
+// exp === "contents of file"
+```
+
+**Specific rules for \*.css imports**
+
+```javascript
+import exp from "./some-style.css";
+// exp === new CSSStyleSheet()
+// https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet
+
+import exp from "./some-style.css?string";
+// exp === "processed css as string"
+
+import "./some-style.css?style";
+// load style
+```
+
+**Additional rule for creating webp format images**
+
+```javascript
+import exp from "./some-image.png?file&as=webp";
+// exp === "[...]/some-image.1234.webp"
 ```
