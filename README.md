@@ -31,9 +31,9 @@ and add to package.json
 - create entry file **./src/bootstrap.js**
 - optionally create [configuraiton file](#configuration)
 
-## Example Project
+## Example Project Yeoman Generator
 
-[https://github.com/rubixibuc/mf-heroku-demo](https://github.com/rubixibuc/mf-heroku-demo)
+[@rubixibuc/generator-sites](https://www.npmjs.com/package/@rubixibuc/generator-sites)
 
 ## Importing Assets
 
