@@ -39,6 +39,7 @@ module.exports = ({
   module: {
     rules: [
       {
+        exclude: /node_modules\/(?!@rubixibuc\/build-scripts)/,
         rules: [
           obfuscator && {
             loader: WebpackObfuscator.loader,
@@ -48,46 +49,28 @@ module.exports = ({
             },
           },
           {
-            exclude: /node_modules\/(?!@rubixibuc\/build-scripts)/,
-            loader: require.resolve("babel-loader"),
-            options: {
-              presets: [require.resolve("@babel/preset-env")],
-            },
-          },
-          {
-            exclude: /node_modules/,
-            loader: require.resolve("babel-loader"),
-            options: {
-              presets: [require.resolve("@babel/preset-react")],
-            },
-            test: /\.jsx$/i,
+            use: ({ realResource }) => ({
+              loader: require.resolve("babel-loader"),
+              options: {
+                presets: [
+                  require.resolve("@babel/preset-env"),
+                  /\.jsx$/i.test(realResource) &&
+                    require.resolve("@babel/preset-react"),
+                  /\.ts$/i.test(realResource) &&
+                    require.resolve("@babel/preset-typescript"),
+                  /\.tsx$/i.test(realResource) && [
+                    require.resolve("@babel/preset-typescript"),
+                    {
+                      allExtensions: true,
+                      isTSX: true,
+                    },
+                  ],
+                ].filter(Boolean),
+              },
+            }),
           },
         ].filter(Boolean),
         test: /\.([tj])sx?$/i,
-      },
-      {
-        exclude: /node_modules/,
-        loader: require.resolve("babel-loader"),
-        options: {
-          presets: [require.resolve("@babel/preset-typescript")],
-        },
-        test: /\.ts$/i,
-      },
-      {
-        exclude: /node_modules/,
-        loader: require.resolve("babel-loader"),
-        options: {
-          presets: [
-            [
-              require.resolve("@babel/preset-typescript"),
-              {
-                allExtensions: true,
-                isTSX: true,
-              },
-            ],
-          ],
-        },
-        test: /\.tsx$/i,
       },
       {
         resourceQuery: /^\?data/,
@@ -183,6 +166,7 @@ module.exports = ({
     }),
     new ModuleFederationPlugin({
       exposes,
+      filename: "remoteEntry.js",
       name: varName,
       remotes,
       shared,
@@ -211,27 +195,27 @@ module.exports = ({
   ],
   resolve: {
     fallback: {
-      assert: require.resolve("assert"),
-      buffer: require.resolve("buffer"),
+      assert: require.resolve("assert/"),
+      buffer: require.resolve("buffer/"),
       console: require.resolve("console-browserify"),
       constants: require.resolve("constants-browserify"),
       crypto: require.resolve("crypto-browserify"),
       domain: require.resolve("domain-browser"),
-      events: require.resolve("events"),
+      events: require.resolve("events/"),
       http: require.resolve("stream-http"),
       https: require.resolve("https-browserify"),
       os: require.resolve("os-browserify/browser"),
       path: require.resolve("path-browserify"),
       process: require.resolve("process/browser"),
-      punycode: require.resolve("punycode"),
+      punycode: require.resolve("punycode/"),
       querystring: require.resolve("querystring-es3"),
       stream: require.resolve("stream-browserify"),
-      string_decoder: require.resolve("string_decoder"),
-      sys: require.resolve("util"),
+      string_decoder: require.resolve("string_decoder/"),
+      sys: require.resolve("util/"),
       timers: require.resolve("timers-browserify"),
       tty: require.resolve("tty-browserify"),
-      url: require.resolve("url"),
-      util: require.resolve("util"),
+      url: require.resolve("url/"),
+      util: require.resolve("util/"),
       vm: require.resolve("vm-browserify"),
       zlib: require.resolve("browserify-zlib"),
     },
