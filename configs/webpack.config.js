@@ -39,25 +39,55 @@ module.exports = ({
   module: {
     rules: [
       {
-        exclude: /node_modules\/(?!@rubixibuc\/build-scripts)/,
-        test: /\.js$/i,
-        use: {
-          loader: require.resolve("babel-loader"),
-          options: {
-            presets: [require.resolve("@babel/preset-env")],
+        rules: [
+          obfuscator && {
+            loader: WebpackObfuscator.loader,
+            options: {
+              ...obfuscator,
+              ignoreImports: true,
+            },
           },
-        },
+          {
+            exclude: /node_modules\/(?!@rubixibuc\/build-scripts)/,
+            loader: require.resolve("babel-loader"),
+            options: {
+              presets: [require.resolve("@babel/preset-env")],
+            },
+          },
+          {
+            exclude: /node_modules/,
+            loader: require.resolve("babel-loader"),
+            options: {
+              presets: [require.resolve("@babel/preset-react")],
+            },
+            test: /\.jsx$/i,
+          },
+        ].filter(Boolean),
+        test: /\.([tj])sx?$/i,
       },
-      obfuscator && {
-        enforce: "post",
-        test: /\.js$/i,
-        use: {
-          loader: WebpackObfuscator.loader,
-          options: {
-            ...obfuscator,
-            ignoreImports: true,
-          },
+      {
+        exclude: /node_modules/,
+        loader: require.resolve("babel-loader"),
+        options: {
+          presets: [require.resolve("@babel/preset-typescript")],
         },
+        test: /\.ts$/i,
+      },
+      {
+        exclude: /node_modules/,
+        loader: require.resolve("babel-loader"),
+        options: {
+          presets: [
+            [
+              require.resolve("@babel/preset-typescript"),
+              {
+                allExtensions: true,
+                isTSX: true,
+              },
+            ],
+          ],
+        },
+        test: /\.tsx$/i,
       },
       {
         resourceQuery: /^\?data/,
@@ -72,55 +102,29 @@ module.exports = ({
         type: "asset/source",
       },
       {
-        oneOf: [
+        rules: [
           {
-            resourceQuery: /^\?string/,
-            use: [
+            oneOf: [
               {
                 loader: require.resolve("css-loader"),
                 options: {
                   exportType: "string",
                   importLoaders: 1,
                 },
+                resourceQuery: /^\?string/,
               },
               {
-                loader: require.resolve("postcss-loader"),
-                options: {
-                  postcssOptions: {
-                    plugins: [
-                      require.resolve("postcss-preset-env"),
-                      require.resolve("autoprefixer"),
-                    ],
+                resourceQuery: /^\?style/,
+                use: [
+                  require.resolve("style-loader"),
+                  {
+                    loader: require.resolve("css-loader"),
+                    options: {
+                      importLoaders: 1,
+                    },
                   },
-                },
+                ],
               },
-            ],
-          },
-          {
-            resourceQuery: /^\?style/,
-            use: [
-              require.resolve("style-loader"),
-              {
-                loader: require.resolve("css-loader"),
-                options: {
-                  importLoaders: 1,
-                },
-              },
-              {
-                loader: require.resolve("postcss-loader"),
-                options: {
-                  postcssOptions: {
-                    plugins: [
-                      require.resolve("postcss-preset-env"),
-                      require.resolve("autoprefixer"),
-                    ],
-                  },
-                },
-              },
-            ],
-          },
-          {
-            use: [
               {
                 loader: require.resolve("css-loader"),
                 options: {
@@ -128,18 +132,18 @@ module.exports = ({
                   importLoaders: 1,
                 },
               },
-              {
-                loader: require.resolve("postcss-loader"),
-                options: {
-                  postcssOptions: {
-                    plugins: [
-                      require.resolve("postcss-preset-env"),
-                      require.resolve("autoprefixer"),
-                    ],
-                  },
-                },
-              },
             ],
+          },
+          {
+            loader: require.resolve("postcss-loader"),
+            options: {
+              postcssOptions: {
+                plugins: [
+                  require.resolve("postcss-preset-env"),
+                  require.resolve("autoprefixer"),
+                ],
+              },
+            },
           },
         ],
         test: /\.css$/i,

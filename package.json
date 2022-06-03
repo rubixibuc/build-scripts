@@ -21,6 +21,8 @@
   "dependencies": {
     "@babel/core": "^7.16.7",
     "@babel/preset-env": "^7.16.8",
+    "@babel/preset-react": "^7.17.12",
+    "@babel/preset-typescript": "^7.17.12",
     "assert": "^2.0.0",
     "autoprefixer": "^10.4.2",
     "babel-loader": "^8.2.2",
