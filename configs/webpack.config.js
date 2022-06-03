@@ -49,25 +49,27 @@ module.exports = ({
             },
           },
           {
-            use: ({ realResource }) => ({
-              loader: require.resolve("babel-loader"),
-              options: {
-                presets: [
-                  require.resolve("@babel/preset-env"),
-                  /\.jsx$/i.test(realResource) &&
-                    require.resolve("@babel/preset-react"),
-                  /\.ts$/i.test(realResource) &&
-                    require.resolve("@babel/preset-typescript"),
-                  /\.tsx$/i.test(realResource) && [
-                    require.resolve("@babel/preset-typescript"),
-                    {
-                      allExtensions: true,
-                      isTSX: true,
-                    },
-                  ],
-                ].filter(Boolean),
+            use: ({ realResource }) => [
+              {
+                loader: require.resolve("babel-loader"),
+                options: {
+                  presets: [
+                    require.resolve("@babel/preset-env"),
+                    /\.jsx$/i.test(realResource) &&
+                      require.resolve("@babel/preset-react"),
+                    /\.ts$/i.test(realResource) &&
+                      require.resolve("@babel/preset-typescript"),
+                    /\.tsx$/i.test(realResource) && [
+                      require.resolve("@babel/preset-typescript"),
+                      {
+                        allExtensions: true,
+                        isTSX: true,
+                      },
+                    ],
+                  ].filter(Boolean),
+                },
               },
-            }),
+            ],
           },
         ].filter(Boolean),
         test: /\.([tj])sx?$/i,
@@ -194,6 +196,7 @@ module.exports = ({
     }),
   ],
   resolve: {
+    extensions: [".tsx", ".ts", "jsx", "..."],
     fallback: {
       assert: require.resolve("assert/"),
       buffer: require.resolve("buffer/"),
