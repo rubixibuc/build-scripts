@@ -127,6 +127,11 @@ module.exports = {
   scripts: [],
   // module federation shared modules
   shared: {},
+  // tailwindcss configuration see: https://tailwindcss.com/
+  // tailwindcss utility classes are automatically prefixed with varName found below
+  // false = no tailwindcss
+  // {} = tailwindcss configuration
+  tailwindcss: false,
   // app meta
   themeColor: "#fff",
   // site title
@@ -148,6 +153,13 @@ https://www.npmjs.com/package/html-webpack-tags-plugin
   "*.{json,md}": "build-scripts prettier --fix"
 }
 ```
+
+## Javascript variants
+
+- \*.js
+- \*.jsx
+- \*.ts (transpiles but doesn't do build time typechecking)
+- \*.tsx (transpiles but doesn't do build time typechecking)
 
 ## Importing Assets
 

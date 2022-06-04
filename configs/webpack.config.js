@@ -22,6 +22,7 @@ module.exports = ({
   remotes,
   scripts = [],
   shared,
+  tailwindcss,
   themeColor,
   title = "My App",
   varName = "myapp",
@@ -40,24 +41,39 @@ module.exports = ({
     rules: [
       {
         exclude: /node_modules\/(?!@rubixibuc\/build-scripts)/,
-        test: /\.js$/i,
-        use: {
-          loader: require.resolve("babel-loader"),
-          options: {
-            presets: [require.resolve("@babel/preset-env")],
+        rules: [
+          obfuscator && {
+            loader: WebpackObfuscator.loader,
+            options: {
+              ...obfuscator,
+              ignoreImports: true,
+            },
           },
-        },
-      },
-      obfuscator && {
-        enforce: "post",
-        test: /\.js$/i,
-        use: {
-          loader: WebpackObfuscator.loader,
-          options: {
-            ...obfuscator,
-            ignoreImports: true,
+          {
+            use: ({ realResource }) => [
+              {
+                loader: require.resolve("babel-loader"),
+                options: {
+                  presets: [
+                    require.resolve("@babel/preset-env"),
+                    /\.jsx$/i.test(realResource) &&
+                      require.resolve("@babel/preset-react"),
+                    /\.ts$/i.test(realResource) &&
+                      require.resolve("@babel/preset-typescript"),
+                    /\.tsx$/i.test(realResource) && [
+                      require.resolve("@babel/preset-typescript"),
+                      {
+                        allExtensions: true,
+                        isTSX: true,
+                      },
+                    ],
+                  ].filter(Boolean),
+                },
+              },
+            ],
           },
-        },
+        ].filter(Boolean),
+        test: /\.([tj])sx?$/i,
       },
       {
         resourceQuery: /^\?data/,
@@ -72,55 +88,29 @@ module.exports = ({
         type: "asset/source",
       },
       {
-        oneOf: [
+        rules: [
           {
-            resourceQuery: /^\?string/,
-            use: [
+            oneOf: [
               {
                 loader: require.resolve("css-loader"),
                 options: {
                   exportType: "string",
                   importLoaders: 1,
                 },
+                resourceQuery: /^\?string/,
               },
               {
-                loader: require.resolve("postcss-loader"),
-                options: {
-                  postcssOptions: {
-                    plugins: [
-                      require.resolve("postcss-preset-env"),
-                      require.resolve("autoprefixer"),
-                    ],
+                resourceQuery: /^\?style/,
+                use: [
+                  require.resolve("style-loader"),
+                  {
+                    loader: require.resolve("css-loader"),
+                    options: {
+                      importLoaders: 1,
+                    },
                   },
-                },
+                ],
               },
-            ],
-          },
-          {
-            resourceQuery: /^\?style/,
-            use: [
-              require.resolve("style-loader"),
-              {
-                loader: require.resolve("css-loader"),
-                options: {
-                  importLoaders: 1,
-                },
-              },
-              {
-                loader: require.resolve("postcss-loader"),
-                options: {
-                  postcssOptions: {
-                    plugins: [
-                      require.resolve("postcss-preset-env"),
-                      require.resolve("autoprefixer"),
-                    ],
-                  },
-                },
-              },
-            ],
-          },
-          {
-            use: [
               {
                 loader: require.resolve("css-loader"),
                 options: {
@@ -128,18 +118,22 @@ module.exports = ({
                   importLoaders: 1,
                 },
               },
-              {
-                loader: require.resolve("postcss-loader"),
-                options: {
-                  postcssOptions: {
-                    plugins: [
-                      require.resolve("postcss-preset-env"),
-                      require.resolve("autoprefixer"),
-                    ],
-                  },
-                },
-              },
             ],
+          },
+          {
+            loader: require.resolve("postcss-loader"),
+            options: {
+              postcssOptions: {
+                plugins: [
+                  require.resolve("postcss-preset-env"),
+                  tailwindcss && [
+                    require.resolve("tailwindcss"),
+                    { ...tailwindcss, prefix: varName },
+                  ],
+                  require.resolve("autoprefixer"),
+                ].filter(Boolean),
+              },
+            },
           },
         ],
         test: /\.css$/i,
@@ -179,6 +173,7 @@ module.exports = ({
     }),
     new ModuleFederationPlugin({
       exposes,
+      filename: "remoteEntry.js",
       name: varName,
       remotes,
       shared,
@@ -206,28 +201,29 @@ module.exports = ({
     }),
   ],
   resolve: {
+    extensions: [".tsx", ".ts", "jsx", "..."],
     fallback: {
-      assert: require.resolve("assert"),
-      buffer: require.resolve("buffer"),
+      assert: require.resolve("assert/"),
+      buffer: require.resolve("buffer/"),
       console: require.resolve("console-browserify"),
       constants: require.resolve("constants-browserify"),
       crypto: require.resolve("crypto-browserify"),
       domain: require.resolve("domain-browser"),
-      events: require.resolve("events"),
+      events: require.resolve("events/"),
       http: require.resolve("stream-http"),
       https: require.resolve("https-browserify"),
       os: require.resolve("os-browserify/browser"),
       path: require.resolve("path-browserify"),
       process: require.resolve("process/browser"),
-      punycode: require.resolve("punycode"),
+      punycode: require.resolve("punycode/"),
       querystring: require.resolve("querystring-es3"),
       stream: require.resolve("stream-browserify"),
-      string_decoder: require.resolve("string_decoder"),
-      sys: require.resolve("util"),
+      string_decoder: require.resolve("string_decoder/"),
+      sys: require.resolve("util/"),
       timers: require.resolve("timers-browserify"),
       tty: require.resolve("tty-browserify"),
-      url: require.resolve("url"),
-      util: require.resolve("util"),
+      url: require.resolve("url/"),
+      util: require.resolve("util/"),
       vm: require.resolve("vm-browserify"),
       zlib: require.resolve("browserify-zlib"),
     },
