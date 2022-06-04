@@ -128,7 +128,11 @@ module.exports = ({
                   require.resolve("postcss-preset-env"),
                   tailwindcss && [
                     require.resolve("tailwindcss"),
-                    { ...tailwindcss, prefix: varName },
+                    {
+                      ...tailwindcss,
+                      content: ["./src/**/*.{js,jsx,ts,tsx}"],
+                      prefix: varName + "-",
+                    },
                   ],
                   require.resolve("autoprefixer"),
                 ].filter(Boolean),
