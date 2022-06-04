@@ -22,6 +22,7 @@ module.exports = ({
   remotes,
   scripts = [],
   shared,
+  tailwindcss,
   themeColor,
   title = "My App",
   varName = "myapp",
@@ -125,8 +126,12 @@ module.exports = ({
               postcssOptions: {
                 plugins: [
                   require.resolve("postcss-preset-env"),
+                  tailwindcss && [
+                    require.resolve("tailwindcss"),
+                    { ...tailwindcss, prefix: varName },
+                  ],
                   require.resolve("autoprefixer"),
-                ],
+                ].filter(Boolean),
               },
             },
           },
