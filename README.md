@@ -110,7 +110,7 @@ module.exports = {
   // injected meta tags,
   metas: [],
   // obfuscator options see: https://github.com/javascript-obfuscator/webpack-obfuscator#obfuscatoroptions
-  // falsey = disabled
+  // false = disabled
   // {} = options
   obfuscator: false,
   // includes both "core-js/stable" and "regenerator-runtime/runtime"
@@ -121,6 +121,11 @@ module.exports = {
   polyfill: "entry",
   // webpack dev server port
   port: 8080,
+  // require file before async bootstrap
+  // false = no preboot
+  // true = src/preboot.(js|jsx|ts|tsx)
+  // "{pathToFile}" = src/{pathToFile}
+  preboot: false,
   // module federation remotes
   remotes: {},
   // injected script tags

@@ -19,6 +19,7 @@ module.exports = ({
   obfuscator,
   polyfill = "entry",
   port,
+  preboot,
   remotes,
   scripts = [],
   shared,
@@ -33,8 +34,12 @@ module.exports = ({
     port,
   },
   entry: [
-    polyfill === "entry" && require.resolve("../polyfill.js"),
-    require.resolve("../index.js"),
+    polyfill === "entry" && require.resolve("../polyfill"),
+    preboot &&
+      (preboot === true
+        ? path.resolve("src/preboot")
+        : path.resolve("src", preboot)),
+    require.resolve("../index"),
   ].filter(Boolean),
   mode: "development",
   module: {
