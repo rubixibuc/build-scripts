@@ -129,8 +129,8 @@ module.exports = {
   shared: {},
   // tailwindcss configuration see: https://tailwindcss.com/
   // tailwindcss utility classes are automatically prefixed with varName found below
-  // {} = tailwindcss configuration
   // false = no tailwindcss
+  // {} = tailwindcss configuration
   tailwindcss: false,
   // app meta
   themeColor: "#fff",
