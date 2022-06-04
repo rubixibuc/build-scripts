@@ -1,6 +1,6 @@
 # 🔨 build-scripts 🧹
 
-**Batteries included [webpack](https://webpack.js.org/) with [module federation](https://webpack.js.org/concepts/module-federation/) build and linting scripts**
+**Batteries included [webpack](https://webpack.js.org/) + [module federation](https://webpack.js.org/concepts/module-federation/) build and linting scripts**
 
 ## Quick Start
 
@@ -163,8 +163,8 @@ https://www.npmjs.com/package/html-webpack-tags-plugin
 
 - \*.js
 - \*.jsx
-- \*.ts (transpiles but doesn't do build time typechecking)
-- \*.tsx (transpiles but doesn't do build time typechecking)
+- \*.ts (transpiles, but doesn't do build time typechecking)
+- \*.tsx (transpiles, but doesn't do build time typechecking)
 
 ## Importing Assets
 

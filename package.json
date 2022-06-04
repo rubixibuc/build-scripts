@@ -1,7 +1,11 @@
 {
   "name": "@rubixibuc/build-scripts",
   "version": "0.33.2",
-  "description": "Batteries included webpack with module federation build and linting scripts",
+  "description": "Batteries included webpack + module federation build and linting scripts",
+  "keywords": [
+    "build scripts",
+    "module federation"
+  ],
   "bin": "cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
