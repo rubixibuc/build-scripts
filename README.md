@@ -133,7 +133,7 @@ module.exports = {
   },
   // webpack dev server port
   port: 8080,
-  // require src/preboot.(tsx|ts|jsx|js) before async bootstrap
+  // import src/preboot.(tsx|ts|jsx|js) before async bootstrap
   // undefined = auto detect
   // false = ignore
   // true = force
