@@ -113,14 +113,18 @@ module.exports = {
   // false = disabled
   // {} = options
   obfuscator: false,
+  // import web polyfills
+  // {} = custom polyfill configuration
+  // false = no polyfills
+  // undefined = include all polyfills
   polyfill: {
-    // includes both "core-js/stable" and "regenerator-runtime/runtime"
-    // import "@rubixibuc/build-scripts/polyfill/browser" to include manually
+    // import both "core-js/stable" and "regenerator-runtime/runtime"
+    // import "@rubixibuc/build-scripts/polyfill/browser" to add manually
     // true = browser polyfill
     // false = no browser polyfill
     browser: true,
-    // includes both "@webcomponents/webcomponentsjs" and "construct-style-sheets-polyfil"
-    // import "@rubixibuc/build-scripts/polyfill/component" to include manually
+    // import both "@webcomponents/webcomponentsjs" and "construct-style-sheets-polyfil"
+    // import "@rubixibuc/build-scripts/polyfill/component" to add manually
     // true = component polyfill
     // false = no component polyfill
     component: true,
