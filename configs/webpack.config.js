@@ -13,7 +13,7 @@ const fs = require("fs");
 
 module.exports = ({
   background,
-  componentPolyfill,
+  componentPolyfill = "entry",
   exposes,
   links = [],
   logo = require.resolve("../logo.png"),
