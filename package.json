@@ -1,6 +1,6 @@
 {
   "name": "@rubixibuc/build-scripts",
-  "version": "0.35.5",
+  "version": "0.35.6",
   "description": "Batteries included webpack + module federation build and linting scripts",
   "keywords": [
     "build scripts",
