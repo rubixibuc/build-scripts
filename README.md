@@ -154,9 +154,7 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
   ```
 
   - [1] [tags documentation](https://github.com/jharris4/html-webpack-tags-plugin#configuration)
-
   - [2] [obfuscator options](https://github.com/javascript-obfuscator/webpack-obfuscator#obfuscatoroptions)
-
   - [3] [tailwindcss configuration](https://tailwindcss.com/docs/configuration)
 
 - example [`.lintstagedrc.json`](https://github.com/okonet/lint-staged)
