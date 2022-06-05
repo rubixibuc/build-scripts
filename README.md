@@ -1,4 +1,4 @@
-![project logo](./project-logo.jpeg)
+![project logo](./project-logo.png)
 
 Batteries included [webpack](https://webpack.js.org/) + [module federation](https://webpack.js.org/concepts/module-federation/) build and linting scripts
 
