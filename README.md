@@ -100,12 +100,6 @@ example + defaults 👇
 module.exports = {
   // app meta
   background: "#fff",
-  // includes both "@webcomponents/webcomponentsjs" and "construct-style-sheets-polyfil"
-  // import "@rubixibuc/build-scripts/polyfill/component" to include manually
-  // choices: ["entry", false]
-  // "entry" = entry component polyfill
-  // false = no component polyfill
-  componentPolyfill: "entry",
   // module federation exposed paths
   exposes: {},
   // inject link tags,
@@ -119,12 +113,18 @@ module.exports = {
   // false = disabled
   // {} = options
   obfuscator: false,
-  // includes both "core-js/stable" and "regenerator-runtime/runtime"
-  // import "@rubixibuc/build-scripts/polyfill" to include manually
-  // choices: ["entry", false]
-  // "entry" = entry browser polyfill
-  // false = no browser polyfill
-  polyfill: "entry",
+  polyfill: {
+    // includes both "core-js/stable" and "regenerator-runtime/runtime"
+    // import "@rubixibuc/build-scripts/polyfill/browser" to include manually
+    // true = browser polyfill
+    // false = no browser polyfill
+    browser: true,
+    // includes both "@webcomponents/webcomponentsjs" and "construct-style-sheets-polyfil"
+    // import "@rubixibuc/build-scripts/polyfill/component" to include manually
+    // true = component polyfill
+    // false = no component polyfill
+    component: true,
+  },
   // webpack dev server port
   port: 8080,
   // require src/preboot.(tsx|ts|jsx|js) before async bootstrap

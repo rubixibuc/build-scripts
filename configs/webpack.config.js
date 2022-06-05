@@ -13,13 +13,12 @@ const fs = require("fs");
 
 module.exports = ({
   background,
-  componentPolyfill = "entry",
   exposes,
   links = [],
   logo = require.resolve("../logo.png"),
   metas,
   obfuscator,
-  polyfill = "entry",
+  polyfill = { browser: true, component: true },
   port,
   preboot = ((extensions) =>
     extensions.some((extension) =>
@@ -39,8 +38,8 @@ module.exports = ({
     port,
   },
   entry: [
-    polyfill === "entry" && require.resolve("../polyfill"),
-    componentPolyfill === "entry" && require.resolve("../polyfill/component"),
+    polyfill && polyfill.browser && require.resolve("../polyfill/browser"),
+    polyfill && polyfill.component && require.resolve("../polyfill/component"),
     preboot && path.resolve("src/preboot"),
     require.resolve("../index"),
   ].filter(Boolean),
