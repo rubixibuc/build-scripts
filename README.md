@@ -7,13 +7,17 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
 - create `./src/bootstrap.js` entry file
 - add optional [configuration](#configuration)
 - run directly
+
   ```shell
   npx @rubixibuc/build-scripts run
   ```
+
   or install globally
+
   ```shell
   npm i -g @rubixibuc/build-scripts
   ```
+
   ```shell
   build-scripts run
   ```
@@ -23,10 +27,13 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
 - create `./src/bootstrap.js` entry file
 - add optional [configuration](#configuration)
 - add dependency to project
+
   ```shell
   npm i -D @rubixibuc/build-scripts
   ```
+
 - add `start` and `build` scripts to package.json
+
   ```json
   {
     "scripts": {
@@ -82,11 +89,9 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
 
 # Configuration
 
-- `build-scripts.config.js`
+- example + defaults `build-scripts.config.js`
 
   [configuration formats](https://github.com/davidtheclark/cosmiconfig#explorersearch)
-
-  example + defaults 👇
 
   ```javascript
   module.exports = {
