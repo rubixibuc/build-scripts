@@ -9,9 +9,11 @@ const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const InjectBodyPlugin = require("inject-body-webpack-plugin").default;
 const WebpackObfuscator = require("webpack-obfuscator");
+const fs = require("fs");
 
 module.exports = ({
   background,
+  componentPolyfill,
   exposes,
   links = [],
   logo = require.resolve("../logo.png"),
@@ -19,7 +21,10 @@ module.exports = ({
   obfuscator,
   polyfill = "entry",
   port,
-  preboot,
+  preboot = ((extensions) =>
+    extensions.some((extension) =>
+      fs.existsSync(path.resolve("src", "preboot." + extension))
+    ))(["txs", "ts", "jsx", "js"]),
   remotes,
   scripts = [],
   shared,
@@ -35,6 +40,7 @@ module.exports = ({
   },
   entry: [
     polyfill === "entry" && require.resolve("../polyfill"),
+    componentPolyfill === "entry" && require.resolve("../polyfill/component"),
     preboot &&
       (preboot === true
         ? path.resolve("src/preboot")
