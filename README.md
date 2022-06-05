@@ -13,6 +13,8 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
   or install globally
   ```shell
   npm i -g @rubixibuc/build-scripts
+  ```
+  ```shell
   build-scripts run
   ```
 
@@ -133,7 +135,7 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
     // module federation shared modules
     shared: {},
     // tailwindcss configuration [3]
-    // tailwindcss utility classes are automatically prefixed with varName found below
+    // tailwindcss utility classes are automatically prefixed with varName below
     // false = no tailwindcss
     // {} = tailwindcss configuration
     tailwindcss: false,
@@ -174,33 +176,41 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
 - All asset types are supported according to the following rules
 
   ```javascript
-  import exp from "./some-asset.png?data";
   // exp === "data:[...]"
+  import exp from "./some-asset.png?data";
+  ```
 
-  import exp from "./some-asset.png?file";
+  ```javascript
   // exp === "[...]/some-asset.1234.png?file"
+  import exp from "./some-asset.png?file";
+  ```
 
-  import exp from "./some-asset.txt?source";
+  ```javascript
   // exp === "contents of file"
+  import exp from "./some-asset.txt?source";
   ```
 
 - Specific rules for \*.css imports
 
   ```javascript
-  import exp from "./some-style.css";
   // exp === new CSSStyleSheet()
   // https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet
+  import exp from "./some-style.css";
+  ```
 
-  import exp from "./some-style.css?string";
+  ```javascript
   // exp === "processed css as string"
+  import exp from "./some-style.css?string";
+  ```
 
-  import "./some-style.css?style";
+  ```javascript
   // load style
+  import "./some-style.css?style";
   ```
 
 - Additional rule for creating webp formatted images
 
   ```javascript
-  import exp from "./some-image.png?file&as=webp";
   // exp === "[...]/some-image.1234.webp"
+  import exp from "./some-image.png?file&as=webp";
   ```
