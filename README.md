@@ -1,18 +1,18 @@
 # 🔨 build-scripts 🧹
 
-**Batteries included [webpack](https://webpack.js.org/) + [module federation](https://webpack.js.org/concepts/module-federation/) build and linting scripts**
+Batteries included [webpack](https://webpack.js.org/) + [module federation](https://webpack.js.org/concepts/module-federation/) build and linting scripts
 
 ![project logo](./project-logo.jpeg)
 
 ## Quick Start
 
-- create **./src/bootstrap.js** entry file
-- optionally create [configuration file](#configuration)
-- run directly:
+- create `./src/bootstrap.js` entry file
+- add optional [configuration](#configuration)
+- run directly
   ```shell
   npx @rubixibuc/build-scripts run
   ```
-  or install globally:
+  or install globally
   ```shell
   npm i -g @rubixibuc/build-scripts
   build-scripts run
@@ -20,13 +20,13 @@
 
 ## Usage
 
-- create **./src/bootstrap.js** entry file
-- optionally create [configuration file](#configuration)
-- add dependency to project:
+- create `./src/bootstrap.js` entry file
+- add optional [configuration](#configuration)
+- add dependency to project
   ```shell
   npm i -D @rubixibuc/build-scripts
   ```
-- add `start` and `build` scripts to package.json:
+- add `start` and `build` scripts to package.json
   ```json
   {
     "scripts": {
@@ -36,142 +36,135 @@
   }
   ```
 
-## Commands
+## CLI
 
-```shell
-build-scripts [command]
-```
+- ### build
 
-- [build](#build)
-- [eslint](#eslint)
-- [prettier](#prettier)
-- [run](#run)
-- [stylelint](#stylelint)
+  Writes production build to `./dist` folder
 
-### \[build\]
+  ```shell
+  build-scripts build
+  ```
 
-**Outputs production build to /dist folder**
+- ### eslint
 
-```shell
-build-scripts build
-```
+  Runs eslint against project files
 
-### \[eslint\]
+  ```shell
+  build-scripts eslint [-f, --fix] [-c, --cache] [-mw, --max-warnings <max-warnings>] <paths/globs>
+  ```
 
-**Runs eslint against project files**
+- ### prettier
 
-```shell
-build-scripts eslint [-f, --fix] [-c, --cache] [-mw, --max-warnings <max-warnings>] <paths/globs>
-```
+  Runs prettier against project files
 
-### \[prettier\]
+  ```shell
+  build-scripts prettier [-f, --fix] <paths/globs>
+  ```
 
-**Runs prettier against project files**
+- ### run
 
-```shell
-build-scripts prettier [-f, --fix] <paths/globs>
-```
+  Runs dev server
 
-### \[run\]
+  _if specified, command line port overrides setting from config_
 
-**Runs dev server**
+  ```shell
+  build-scripts run [-p, --port <port>]
+  ```
 
-_if specified, command line port overrides setting from config_
+- ### stylelint
 
-```shell
-build-scripts run [-p, --port <port>]
-```
+  Runs stylelint against project files
 
-### \[stylelint\]
-
-**Runs stylelint against project files**
-
-```shell
-build-scripts stylelint [-f, --fix] [-cs, --custom-syntax <custom-syntax>] [-mw, --max-warnings <max-warnings>] <paths/globs>
-```
+  ```shell
+  build-scripts stylelint [-f, --fix] [-cs, --custom-syntax <custom-syntax>] [-mw, --max-warnings <max-warnings>] <paths/globs>
+  ```
 
 ## Configuration:
 
-### build-scripts.config.js
+- ### build-scripts.config.js
 
-_multiple config file formats are [supported](https://github.com/davidtheclark/cosmiconfig#explorersearch)_
+  [multiple formats are supported](https://github.com/davidtheclark/cosmiconfig#explorersearch)
 
-example + defaults 👇
+  example + defaults 👇
 
-```javascript
-module.exports = {
-  // app meta
-  background: "#fff",
-  // module federation exposed paths
-  exposes: {},
-  // inject link tags,
-  links: [],
-  // favicons (all sizes generated)
-  // undefined = "<included image>"
-  logo: void 0,
-  // injected meta tags,
-  metas: [],
-  // obfuscator options see: https://github.com/javascript-obfuscator/webpack-obfuscator#obfuscatoroptions
-  // false = disabled
-  // {} = options
-  obfuscator: false,
-  // import web polyfills
-  // {} = custom polyfill configuration
-  // false = no polyfills
-  // undefined = include all polyfills
-  polyfill: {
-    // imports both "core-js/stable" and "regenerator-runtime/runtime"
-    // import "@rubixibuc/build-scripts/polyfill/browser" to add manually
-    // true = browser polyfill
-    // false = no browser polyfill
-    browser: true,
-    // imports both "@webcomponents/webcomponentsjs" and "construct-style-sheets-polyfil"
-    // import "@rubixibuc/build-scripts/polyfill/component" to add manually
-    // true = component polyfill
-    // false = no component polyfill
-    component: true,
-  },
-  // webpack dev server port
-  port: 8080,
-  // import src/preboot.(tsx|ts|jsx|js) before async bootstrap
-  // undefined = auto detect
-  // false = ignore
-  // true = force
-  preboot: void 0,
-  // module federation remotes
-  remotes: {},
-  // injected script tags
-  scripts: [],
-  // module federation shared modules
-  shared: {},
-  // tailwindcss configuration see: https://tailwindcss.com/
-  // tailwindcss utility classes are automatically prefixed with varName found below
-  // false = no tailwindcss
-  // {} = tailwindcss configuration
-  tailwindcss: false,
-  // app meta
-  themeColor: "#fff",
-  // site title
-  title: "My App",
-  // module federation var name
-  varName: "myapp",
-};
-```
+  ```javascript
+  module.exports = {
+    // app meta
+    background: "#fff",
+    // module federation exposed paths
+    exposes: {},
+    // inject link tags [1]
+    links: [],
+    // favicons (all sizes generated)
+    // undefined = "<included image>"
+    logo: void 0,
+    // injected meta tags [1]
+    metas: [],
+    // obfuscator options [2]
+    // false = disabled
+    // {} = options
+    obfuscator: false,
+    // import web polyfills
+    // {} = custom polyfill configuration
+    // false = no polyfills
+    // undefined = include all polyfills
+    polyfill: {
+      // imports both "core-js/stable" and "regenerator-runtime/runtime"
+      // import "@rubixibuc/build-scripts/polyfill/browser" to add manually
+      // true = browser polyfill
+      // false = no browser polyfill
+      browser: true,
+      // imports both "@webcomponents/webcomponentsjs" and "construct-style-sheets-polyfil"
+      // import "@rubixibuc/build-scripts/polyfill/component" to add manually
+      // true = component polyfill
+      // false = no component polyfill
+      component: true,
+    },
+    // webpack dev server port
+    port: 8080,
+    // import src/preboot.(tsx|ts|jsx|js) before async bootstrap
+    // undefined = auto detect
+    // false = ignore
+    // true = force
+    preboot: void 0,
+    // module federation remotes
+    remotes: {},
+    // injected script tags [1]
+    scripts: [],
+    // module federation shared modules
+    shared: {},
+    // tailwindcss configuration [3]
+    // tailwindcss utility classes are automatically prefixed with varName found below
+    // false = no tailwindcss
+    // {} = tailwindcss configuration
+    tailwindcss: false,
+    // app meta
+    themeColor: "#fff",
+    // site title
+    title: "My App",
+    // module federation var name
+    varName: "myapp",
+  };
+  ```
 
-_see for injected tags documentation_
-https://www.npmjs.com/package/html-webpack-tags-plugin
+  - **[1]** [injected tags documentation](https://www.npmjs.com/package/html-webpack-tags-plugin)
 
-### Example [lint-staged](https://github.com/okonet/lint-staged) Config
+  - **[2]** [obfuscator options](https://github.com/javascript-obfuscator/webpack-obfuscator#obfuscatoroptions)
 
-```json
-{
-  "*.js": "build-scripts eslint --cache --fix",
-  "*.css": "build-scripts stylelint --fix",
-  "*.{json,md}": "build-scripts prettier --fix"
-}
-```
+  - **[3]** [tailwindcss configuration](https://tailwindcss.com)
 
-## Javascript variants
+- ### example [lint-staged](https://github.com/okonet/lint-staged) configuration
+
+  ```json
+  {
+    "*.js": "build-scripts eslint --cache --fix",
+    "*.css": "build-scripts stylelint --fix",
+    "*.{json,md}": "build-scripts prettier --fix"
+  }
+  ```
+
+## Javascript Variants
 
 - \*.js
 - \*.jsx
@@ -180,36 +173,36 @@ https://www.npmjs.com/package/html-webpack-tags-plugin
 
 ## Importing Assets
 
-**All asset types are supported according to the following rules**
+- All asset types are supported according to the following rules
 
-```javascript
-import exp from "./some-asset.png?data";
-// exp === "data:[...]"
+  ```javascript
+  import exp from "./some-asset.png?data";
+  // exp === "data:[...]"
 
-import exp from "./some-asset.png?file";
-// exp === "[...]/some-asset.1234.png?file"
+  import exp from "./some-asset.png?file";
+  // exp === "[...]/some-asset.1234.png?file"
 
-import exp from "./some-asset.txt?source";
-// exp === "contents of file"
-```
+  import exp from "./some-asset.txt?source";
+  // exp === "contents of file"
+  ```
 
-**Specific rules for \*.css imports**
+- Specific rules for \*.css imports
 
-```javascript
-import exp from "./some-style.css";
-// exp === new CSSStyleSheet()
-// https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet
+  ```javascript
+  import exp from "./some-style.css";
+  // exp === new CSSStyleSheet()
+  // https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet
 
-import exp from "./some-style.css?string";
-// exp === "processed css as string"
+  import exp from "./some-style.css?string";
+  // exp === "processed css as string"
 
-import "./some-style.css?style";
-// load style
-```
+  import "./some-style.css?style";
+  // load style
+  ```
 
-**Additional rule for creating webp format images**
+- Additional rule for creating webp formatted images
 
-```javascript
-import exp from "./some-image.png?file&as=webp";
-// exp === "[...]/some-image.1234.webp"
-```
+  ```javascript
+  import exp from "./some-image.png?file&as=webp";
+  // exp === "[...]/some-image.1234.webp"
+  ```
