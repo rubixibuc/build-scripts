@@ -148,7 +148,7 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
   };
   ```
 
-  - [1] [tags documentation](https://www.npmjs.com/package/html-webpack-tags-plugin)
+  - [1] [tags documentation](https://github.com/jharris4/html-webpack-tags-plugin#configuration)
 
   - [2] [obfuscator options](https://github.com/javascript-obfuscator/webpack-obfuscator#obfuscatoroptions)
 
