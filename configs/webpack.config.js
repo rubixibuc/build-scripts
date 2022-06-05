@@ -41,10 +41,7 @@ module.exports = ({
   entry: [
     polyfill === "entry" && require.resolve("../polyfill"),
     componentPolyfill === "entry" && require.resolve("../polyfill/component"),
-    preboot &&
-      (preboot === true
-        ? path.resolve("src/preboot")
-        : path.resolve("src", preboot)),
+    preboot && path.resolve("src/preboot"),
     require.resolve("../index"),
   ].filter(Boolean),
   mode: "development",
