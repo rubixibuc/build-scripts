@@ -1,10 +1,8 @@
-# 🔨 build-scripts 🧹
+![project logo](./project-logo.jpeg)
 
 Batteries included [webpack](https://webpack.js.org/) + [module federation](https://webpack.js.org/concepts/module-federation/) build and linting scripts
 
-![project logo](./project-logo.jpeg)
-
-## Quick Start
+# Quick Start
 
 - create `./src/bootstrap.js` entry file
 - add optional [configuration](#configuration)
@@ -18,7 +16,7 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
   build-scripts run
   ```
 
-## Usage
+# Usage
 
 - create `./src/bootstrap.js` entry file
 - add optional [configuration](#configuration)
@@ -36,9 +34,9 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
   }
   ```
 
-## CLI
+# CLI
 
-- ### build
+- `build`
 
   Writes production build to `./dist` folder
 
@@ -46,7 +44,7 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
   build-scripts build
   ```
 
-- ### eslint
+- `eslint`
 
   Runs eslint against project files
 
@@ -54,7 +52,7 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
   build-scripts eslint [-f, --fix] [-c, --cache] [-mw, --max-warnings <max-warnings>] <paths/globs>
   ```
 
-- ### prettier
+- `prettier`
 
   Runs prettier against project files
 
@@ -62,7 +60,7 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
   build-scripts prettier [-f, --fix] <paths/globs>
   ```
 
-- ### run
+- `run`
 
   Runs dev server
 
@@ -72,7 +70,7 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
   build-scripts run [-p, --port <port>]
   ```
 
-- ### stylelint
+- `stylelint`
 
   Runs stylelint against project files
 
@@ -80,11 +78,11 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
   build-scripts stylelint [-f, --fix] [-cs, --custom-syntax <custom-syntax>] [-mw, --max-warnings <max-warnings>] <paths/globs>
   ```
 
-## Configuration:
+# Configuration
 
-- ### build-scripts.config.js
+- `build-scripts.config.js`
 
-  [multiple formats are supported](https://github.com/davidtheclark/cosmiconfig#explorersearch)
+  [multiple configuration formats are supported](https://github.com/davidtheclark/cosmiconfig#explorersearch)
 
   example + defaults 👇
 
@@ -94,12 +92,12 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
     background: "#fff",
     // module federation exposed paths
     exposes: {},
-    // inject link tags [1]
+    // link tags [1]
     links: [],
     // favicons (all sizes generated)
     // undefined = "<included image>"
     logo: void 0,
-    // injected meta tags [1]
+    // meta tags [1]
     metas: [],
     // obfuscator options [2]
     // false = disabled
@@ -130,7 +128,7 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
     preboot: void 0,
     // module federation remotes
     remotes: {},
-    // injected script tags [1]
+    // script tags [1]
     scripts: [],
     // module federation shared modules
     shared: {},
@@ -148,13 +146,13 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
   };
   ```
 
-  - **[1]** [injected tags documentation](https://www.npmjs.com/package/html-webpack-tags-plugin)
+  - **[1]** [tags documentation](https://www.npmjs.com/package/html-webpack-tags-plugin)
 
   - **[2]** [obfuscator options](https://github.com/javascript-obfuscator/webpack-obfuscator#obfuscatoroptions)
 
   - **[3]** [tailwindcss configuration](https://tailwindcss.com)
 
-- ### example [lint-staged](https://github.com/okonet/lint-staged) configuration
+- example [`.lintstagedrc.json`](https://github.com/okonet/lint-staged)
 
   ```json
   {
@@ -164,14 +162,14 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
   }
   ```
 
-## Javascript Variants
+# Javascript Variants
 
-- \*.js
-- \*.jsx
-- \*.ts (transpiles, but doesn't do build time typechecking)
-- \*.tsx (transpiles, but doesn't do build time typechecking)
+- `*.js`
+- `*.jsx`
+- `*.ts` (transpiles, but doesn't do build time typechecking)
+- `*.tsx` (transpiles, but doesn't do build time typechecking)
 
-## Importing Assets
+# Importing Assets
 
 - All asset types are supported according to the following rules
 
