@@ -38,7 +38,7 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
 
 - `build`
 
-  Writes production build to `./dist` folder
+  Outputs production build to `./dist` folder
 
   ```shell
   build-scripts build
@@ -82,7 +82,7 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
 
 - `build-scripts.config.js`
 
-  [multiple configuration formats are supported](https://github.com/davidtheclark/cosmiconfig#explorersearch)
+  [configuration formats](https://github.com/davidtheclark/cosmiconfig#explorersearch)
 
   example + defaults 👇
 
