@@ -152,7 +152,7 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
 
   - [2] [obfuscator options](https://github.com/javascript-obfuscator/webpack-obfuscator#obfuscatoroptions)
 
-  - [3] [tailwindcss configuration](https://tailwindcss.com)
+  - [3] [tailwindcss configuration](https://tailwindcss.com/docs/configuration)
 
 - example [`.lintstagedrc.json`](https://github.com/okonet/lint-staged)
 
