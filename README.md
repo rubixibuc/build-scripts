@@ -70,6 +70,7 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
 - example + defaults `build-scripts.config.js`
   [configuration formats](https://github.com/davidtheclark/cosmiconfig#explorersearch)
   ```javascript
+  // importing from separate files is a recommended pattern
   module.exports = {
     // app meta
     background: "#fff",
