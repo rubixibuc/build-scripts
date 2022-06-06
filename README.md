@@ -1,4 +1,4 @@
-# Build-Scripts
+# build-scripts
 
 Batteries included [webpack](https://webpack.js.org/) + [module federation](https://webpack.js.org/concepts/module-federation/) build and linting scripts
 
