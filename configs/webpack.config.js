@@ -1,4 +1,5 @@
 const path = require("path");
+const fs = require("fs");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 const webpack = require("webpack");
@@ -9,7 +10,6 @@ const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const InjectBodyPlugin = require("inject-body-webpack-plugin").default;
 const WebpackObfuscator = require("webpack-obfuscator");
-const fs = require("fs");
 
 module.exports = ({
   background,
@@ -20,10 +20,9 @@ module.exports = ({
   obfuscator,
   polyfill = { browser: true, component: true },
   port,
-  preboot = ((extensions) =>
-    extensions.some((extension) =>
-      fs.existsSync(path.resolve("src", "preboot." + extension))
-    ))(["txs", "ts", "jsx", "js"]),
+  preboot = ["txs", "ts", "jsx", "js"].some((extension) =>
+    fs.existsSync(path.resolve("src", "preboot." + extension))
+  ),
   remotes,
   scripts = [],
   shared,
