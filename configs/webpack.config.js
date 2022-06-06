@@ -20,8 +20,8 @@ module.exports = ({
   obfuscator,
   polyfill = { browser: true, component: true },
   port,
-  preboot = ["txs", "ts", "jsx", "js"].some((extension) =>
-    fs.existsSync(path.resolve("src", "preboot." + extension))
+  preboot = ["txs", "ts", "jsx", "js"].some((ext) =>
+    fs.existsSync(path.resolve("src", "preboot." + ext))
   ),
   remotes,
   scripts = [],
