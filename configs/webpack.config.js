@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const WebpackObfuscator = require("webpack-obfuscator");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 const webpack = require("webpack");
@@ -9,7 +10,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const InjectBodyPlugin = require("inject-body-webpack-plugin").default;
-const WebpackObfuscator = require("webpack-obfuscator");
 
 module.exports = ({
   background,
