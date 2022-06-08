@@ -106,7 +106,7 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
     // webpack dev server port
     port: 8080,
     // import src/preboot.(tsx|ts|jsx|js) before async bootstrap
-    // undefined = auto detect
+    // undefined = autodetect
     // false = ignore
     // true = force
     preboot: void 0,

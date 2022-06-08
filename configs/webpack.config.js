@@ -20,7 +20,7 @@ module.exports = ({
   obfuscator,
   polyfill = { browser: true, component: true },
   port,
-  preboot = ["txs", "ts", "jsx", "js"].some((ext) =>
+  preboot = ["js", "jsx", "ts", "tsx"].some((ext) =>
     fs.existsSync(path.resolve("src", "preboot." + ext))
   ),
   remotes,
@@ -79,7 +79,7 @@ module.exports = ({
             ],
           },
         ].filter(Boolean),
-        test: /\.([tj])sx?$/i,
+        test: /\.[tj]sx?$/i,
       },
       {
         resourceQuery: /^\?data/,
