@@ -211,7 +211,7 @@ module.exports = ({
     }),
   ],
   resolve: {
-    extensions: [".tsx", ".ts", "jsx", "..."],
+    extensions: [".tsx", ".ts", ".jsx", "..."],
     fallback: {
       assert: require.resolve("assert/"),
       buffer: require.resolve("buffer/"),
