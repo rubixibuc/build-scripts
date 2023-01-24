@@ -10,9 +10,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const InjectBodyPlugin = require("inject-body-webpack-plugin").default;
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = ({
   background,
+  copy = fs.existsSync(path.resolve("public")),
   exposes,
   links = [],
   logo = require.resolve("../logo.png"),
@@ -209,7 +211,11 @@ module.exports = ({
     new InjectBodyPlugin({
       content: '<div id="root" style="display: contents;"></div>',
     }),
-  ],
+    copy &&
+      new CopyPlugin({
+        patterns: [{ from: "public" }],
+      }),
+  ].filter(Boolean),
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", "..."],
     fallback: {
