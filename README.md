@@ -74,6 +74,11 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
   module.exports = {
     // app meta
     background: "#fff",
+    // copy all files inside public folder to output destination folder
+    // undefined = autodetect (copy files if public folder exists)
+    // false = disable public folder copy
+    // true = force public folder copy
+    copy: void 0,
     // module federation exposed paths
     exposes: {},
     // link tags [1]
@@ -106,9 +111,9 @@ Batteries included [webpack](https://webpack.js.org/) + [module federation](http
     // webpack dev server port
     port: 8080,
     // import src/preboot.(tsx|ts|jsx|js) before async bootstrap
-    // undefined = autodetect
-    // false = ignore
-    // true = force
+    // undefined = autodetect (import preboot.* file if it exists)
+    // false = ignore preboot.* file
+    // true = force import
     preboot: void 0,
     // module federation remotes
     remotes: {},
