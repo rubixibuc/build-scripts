@@ -19,6 +19,10 @@
   },
   "overrides": [
     {
+      "files": ["**/*.jsx", "**/*.tsx"],
+      "extends": ["plugin:react/recommended", "plugin:react-hooks/recommended"]
+    },
+    {
       "files": ["**/*.ts", "**/*.tsx"],
       "extends": [
         "eslint:recommended",
