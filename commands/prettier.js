@@ -4,7 +4,7 @@ module.exports = async (globs, options) => {
   const result = spawn.sync(
     "npx",
     [
-      "--no-install",
+      "--yes",
       `prettier@${require("../package.json").dependencies.prettier}`,
       ...(options.fix ? ["--write"] : []),
       "--config",
