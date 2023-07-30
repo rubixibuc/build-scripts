@@ -2,9 +2,10 @@ module.exports = async (globs, options) => {
   const spawn = require("cross-spawn");
 
   const result = spawn.sync(
-    "node",
+    "npx",
     [
-      __dirname + "/../node_modules/.bin/prettier",
+      "--no-install",
+      `prettier@${require("../package.json").dependencies.prettier}`,
       ...(options.fix ? ["--write"] : []),
       "--config",
       __dirname + "/../configs/.prettierrc.js",
