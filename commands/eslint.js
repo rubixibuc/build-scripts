@@ -4,7 +4,11 @@ module.exports = async (globs, options) => {
 
   const { maxWarnings, ...filteredOptions } = options;
 
-  const eslint = new ESLint({ ...filteredOptions, overrideConfig: config });
+  const eslint = new ESLint({
+    ...filteredOptions,
+    overrideConfig: config,
+    resolvePluginsRelativeTo: __dirname,
+  });
 
   const results = await eslint.lintFiles(globs);
 

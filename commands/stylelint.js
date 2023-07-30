@@ -5,6 +5,7 @@ module.exports = async (globs, options) => {
   const results = await stylelint.lint({
     ...options,
     config,
+    configBasedir: __dirname,
     files: globs,
     formatter: "verbose",
   });
