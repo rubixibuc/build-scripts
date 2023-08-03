@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const JavascriptObfuscator = require("javascript-obfuscator");
 const WebpackObfuscator = require("webpack-obfuscator");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
@@ -19,7 +20,7 @@ module.exports = ({
   links = [],
   logo = require.resolve("../logo.png"),
   metas,
-  obfuscator,
+  obfuscator: { optionsPreset: obfuscatorPreset, ...obfuscatorRest } = {},
   polyfill = { browser: true, component: true },
   port,
   preboot = ["js", "jsx", "ts", "tsx"].some((ext) =>
@@ -50,10 +51,12 @@ module.exports = ({
       {
         exclude: /node_modules\/(?!@rubixibuc\/build-scripts)/,
         rules: [
-          obfuscator && {
+          (obfuscatorPreset || obfuscatorRest) && {
             loader: WebpackObfuscator.loader,
             options: {
-              ...obfuscator,
+              ...(obfuscatorPreset &&
+                JavascriptObfuscator.getOptionsByPreset(obfuscatorPreset)),
+              ...obfuscatorRest,
               ignoreImports: true,
             },
           },

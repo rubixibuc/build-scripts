@@ -8,6 +8,7 @@ module.exports = async (globs, options) => {
     ...filteredOptions,
     overrideConfig: config,
     resolvePluginsRelativeTo: __dirname,
+    useEslintrc: false,
   });
 
   const results = await eslint.lintFiles(globs);
