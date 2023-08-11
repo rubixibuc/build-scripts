@@ -6,11 +6,11 @@ module.exports = async (globs, options) => {
     [
       "--yes",
       `prettier@${require("../package.json").dependencies.prettier}`,
-      ...(options.fix ? ["--write"] : []),
+      options.fix && "--write",
       "--config",
       __dirname + "/../configs/.prettierrc.js",
       ...globs,
-    ],
+    ].filter(Boolean),
     {
       stdio: "inherit",
     }
