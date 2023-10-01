@@ -51,7 +51,7 @@ module.exports = ({
       {
         exclude: /node_modules\/(?!@rubixibuc\/build-scripts)/,
         rules: [
-          (obfuscatorPreset || obfuscatorRest) && {
+          (obfuscatorPreset || Object.keys(obfuscatorRest).length > 0) && {
             loader: WebpackObfuscator.loader,
             options: {
               ...(obfuscatorPreset &&
