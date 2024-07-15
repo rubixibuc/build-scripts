@@ -35,7 +35,7 @@ module.exports = ({
   varName = "myapp",
 } = {}) => ({
   devServer: {
-    allowedHosts: [".loca.lt", ".ngrok.io"],
+    allowedHosts: [".loca.lt", ".ngrok.io", ".ngrok.app"],
     historyApiFallback: true,
     port,
   },
@@ -150,8 +150,16 @@ module.exports = ({
               },
             },
           },
+          {
+            loader: require.resolve("less-loader"),
+            test: /\.less$/i,
+          },
+          {
+            loader: require.resolve("sass-loader"),
+            test: /\.(sa|sc)ss$/i,
+          },
         ],
-        test: /\.css$/i,
+        test: /\.(c|le|sa|sc)ss$/i,
       },
     ].filter(Boolean),
   },
